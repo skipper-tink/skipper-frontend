@@ -6,13 +6,30 @@ import {
   Button,
   Checkbox,
   IconButton,
+  Spinner,
 } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Authentication() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+  const navigate = useNavigate();
+  const [loading, setLoading] = React.useState(false);
+
+  const handleSignIn = async () => {
+    try {
+      // Заглушка
+      setLoading(true);
+
+      await new Promise<void>((resolve) => setTimeout(resolve, 2000));
+      setLoading(false);
+      navigate('..');
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="Authentication">
@@ -79,17 +96,21 @@ function Authentication() {
               Запомнить данные
             </Checkbox>
           </div>
-          <IconButton
-            className="Authentication__card-item-done"
-            isRound={true}
-            size="md"
-            variant="solid"
-            color="#000"
-            aria-label="Done"
-            fontSize="28px"
-            bgColor="#ACACAC"
-            icon={<ArrowForwardIcon />}
-          />
+          <div className="Authentication__bottom">
+            {loading && <Spinner />}
+            <IconButton
+              className="Authentication__card-item-done"
+              isRound={true}
+              size="md"
+              variant="solid"
+              color="#000"
+              aria-label="Done"
+              fontSize="28px"
+              bgColor="#ACACAC"
+              icon={<ArrowForwardIcon />}
+              onClick={handleSignIn}
+            />
+          </div>
         </div>
       </div>
     </div>
