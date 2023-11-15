@@ -1,4 +1,4 @@
-.registration {
+.Authentication {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +6,7 @@
   width: 96vw;
 }
 
-.registration__logo {
+.Authentication__logo {
   width: 35%;
   height: 100%;
   border-radius: 10px;
@@ -21,7 +21,7 @@
   margin-right: 50px;
 }
 
-.registration__auth {
+.Authentication__fullcard {
   overflow: auto;
   width: 50%;
   height: 764px;
@@ -33,7 +33,7 @@
   flex-direction: column;
 }
 
-.registration__auth-header {
+.Authentication__header {
   font-size: 24px;
   font-weight: 700;
   line-height: 130%;
@@ -42,7 +42,7 @@
   margin-bottom: 30px;
 }
 
-.registration__auth-card {
+.Authentication__card {
   border-radius: 10px;
   background: #d9d9d9;
   border: 12px solid #acacac;
@@ -54,27 +54,27 @@
   padding: 8px 8px;
 }
 
-.registration__auth-card-item {
+.Authentication__card-item {
   width: 100%;
 }
 
-.registration__auth-card-item > p,
+.Authentication__card-item > p,
 .checkbox {
   margin-left: 24px;
   margin-top: 8px;
 }
 
-.registration__auth-card-item-problems {
+.Authentication__card-item-problems {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.registration__auth-card-item-remember {
+.Authentication__card-item-remember {
   margin-top: 25px;
   margin-left: 24px;
 }
 
-.registration__auth-card-item-done {
+.Authentication__card-item-done {
   align-self: flex-end;
   margin-right: 24px;
 }
