@@ -62,11 +62,10 @@
 .checkbox {
   margin-left: 24px;
   margin-top: 8px;
-}
-
-.Authentication__card-item-problems {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .Authentication__card-item-remember {
@@ -85,4 +84,19 @@
 
 .Authentication__card-item-done {
   margin-left: auto;
+}
+
+.Authentication__link-to-register {
+  width: 384px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.Authentication__link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

@@ -83,9 +83,7 @@ function Authentication() {
             </InputGroup>
           </div>
           <a href="" className="Authentication__card-item problems">
-            <p className="Authentication__card-item-problems">
-              Проблемы со входом?
-            </p>
+            <p className="Authentication__link">Проблемы со входом?</p>
           </a>
           <div className="Authentication__card-item">
             <Checkbox
@@ -111,6 +109,13 @@ function Authentication() {
               onClick={handleSignIn}
             />
           </div>
+        </div>
+        <div className="Authentication__link-to-register">
+          <a href="" className="Authentication__link">
+            <p className="Authentication__register-text">
+              Я еще не зарегистрирован в системе
+            </p>
+          </a>
         </div>
       </div>
     </div>
