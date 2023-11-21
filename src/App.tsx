@@ -1,20 +1,18 @@
 import React from 'react';
 import './css/App.css';
 import Authentication from './components/Authentication';
+import NotFound from './components/NotFound';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Routes>
-          <Route path="/Authentication" element={<Authentication />} />{' '}
-        </Routes>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Authentication" element={<Authentication />} />{' '}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
