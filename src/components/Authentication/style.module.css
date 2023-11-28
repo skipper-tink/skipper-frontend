@@ -33,6 +33,12 @@
   flex-direction: column;
 }
 
+.formCard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .header {
   font-size: 24px;
   font-weight: 700;
@@ -50,6 +56,7 @@
   height: 328px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 8px 8px;
 }
@@ -68,16 +75,13 @@
   line-height: normal;
 }
 
-.cardItemRemember {
-  margin-top: 25px;
-  margin-left: 24px;
-}
-
 .bottom {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
+  margin-top: 25px;
   width: 100%;
   padding: 0 24px;
 }
@@ -94,7 +98,7 @@
 
 .link {
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
