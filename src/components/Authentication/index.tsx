@@ -1,4 +1,4 @@
-import '../../css/Authentication.css';
+import styles from './style.module.css';
 import {
   Input,
   InputGroup,
@@ -32,18 +32,14 @@ function Authentication() {
   };
 
   return (
-    <div className="Authentication">
-      <div className="Authentication__logo">
-        <img
-          src="./tinkoffLogo.svg"
-          alt="TINKOFFLOGO"
-          className="Authentication__logo-img"
-        />
+    <div className={styles.Authentication}>
+      <div className={styles.logo}>
+        <img src="./tinkoffLogo.svg" alt="TINKOFFLOGO" />
       </div>
-      <div className="Authentication__fullcard">
-        <h1 className="Authentication__header">Авторизация</h1>
-        <div className="Authentication__card">
-          <div className="Authentication__card-item login">
+      <div className={styles.fullcard}>
+        <h1 className={styles.header}>Авторизация</h1>
+        <div className={styles.card}>
+          <div className={[styles.cardItem, styles.login].join(' ')}>
             <p>Почта</p>
             <Input
               placeholder="Email"
@@ -59,7 +55,7 @@ function Authentication() {
               }}
             />
           </div>
-          <div className="Authentication__card-item password">
+          <div className={[styles.cardItem, styles.password].join(' ')}>
             <p>Пароль</p>
             <InputGroup size="lg">
               <Input
@@ -82,22 +78,22 @@ function Authentication() {
               </InputRightElement>
             </InputGroup>
           </div>
-          <a href="" className="Authentication__card-item problems">
-            <p className="Authentication__link">Проблемы со входом?</p>
+          <a href="" className={[styles.cardItem, styles.problems].join(' ')}>
+            <p className="link">Проблемы со входом?</p>
           </a>
-          <div className="Authentication__card-item">
+          <div className={styles.cardItem}>
             <Checkbox
-              className="Authentication__card-item-remember"
+              className={styles.cardItemRemember}
               defaultChecked
               borderColor="#1D1B20"
             >
               Запомнить данные
             </Checkbox>
           </div>
-          <div className="Authentication__bottom">
+          <div className={styles.bottom}>
             {loading && <Spinner />}
             <IconButton
-              className="Authentication__card-item-done"
+              className={styles.cardItemDone}
               isRound={true}
               size="md"
               variant="solid"
@@ -110,11 +106,9 @@ function Authentication() {
             />
           </div>
         </div>
-        <div className="Authentication__link-to-register">
-          <a href="" className="Authentication__link">
-            <p className="Authentication__register-text">
-              Я еще не зарегистрирован в системе
-            </p>
+        <div className={styles.linkToRegister}>
+          <a href="" className="link">
+            <p>Я еще не зарегистрирован в системе</p>
           </a>
         </div>
       </div>
