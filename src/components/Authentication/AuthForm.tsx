@@ -15,7 +15,7 @@ import {
   Text,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { Form, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
