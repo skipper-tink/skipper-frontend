@@ -13,33 +13,35 @@ import {
   useBoolean,
   Box,
   Text,
+  FormErrorMessage,
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
+import { useForm } from 'react-hook-form';
 
 const style = classNames.bind(styles);
 
 function AuthForm() {
   const [show, setShow] = useBoolean();
   const navigate = useNavigate();
-  const [loading, setLoading] = React.useState(false);
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const handleSignIn = async () => {
-    try {
-      // Заглушка
-      setLoading(true);
-
-      await new Promise<void>((resolve) => setTimeout(resolve, 2000));
-      setLoading(false);
-      navigate('..');
-    } catch (error) {
-      setLoading(false);
-    }
-  };
+  function onSubmit(values: any) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('');
+        navigate('..');
+      }, 3000);
+    });
+  }
   return (
-    <FormControl className={style('formCard')}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Heading
         as="h2"
         fontWeight="Bold"
@@ -50,53 +52,76 @@ function AuthForm() {
         Авторизация
       </Heading>
       <Box className={style('card')}>
-        <Box className={style('cardItem', 'login')}>
-          <Text fontSize="xs">Почта</Text>
-          <Input
-            id="email"
-            placeholder="Email"
-            borderColor="gray.400"
-            variant="filled"
-            background="white"
-            isRequired
-            size="lg"
-            colorScheme="whiteAlpha"
-            type="email"
-            _focus={{
-              bg: 'white',
-            }}
-          />
-        </Box>
-        <Box className={style('cardItem', 'password')}>
-          <Text fontSize="xs">Пароль</Text>
-          <InputGroup size="lg">
+        <FormControl className={style('formCard')} isInvalid={!!errors.email}>
+          <Box className={style('cardItem', 'login')}>
+            <Text fontSize="xs">Почта</Text>
             <Input
-              id="password"
-              pr="4.5rem"
-              type={show ? 'text' : 'password'}
-              placeholder="Enter password"
+              id="email"
+              placeholder="Email"
               borderColor="gray.400"
               variant="filled"
               background="white"
-              isRequired={true}
               size="lg"
+              colorScheme="whiteAlpha"
               _focus={{
                 bg: 'white',
               }}
+              {...register('email', {
+                required: 'This is required',
+                minLength: {
+                  value: 6,
+                  message: 'Введите почту вида: exp@gmail.com',
+                },
+              })}
             />
-            <InputRightElement width="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={setShow.toggle}>
-                {show ? 'Hide' : 'Show'}
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-        </Box>
+            <FormErrorMessage>
+              <Text ml="6">{errors.email && errors.email.message + ''}</Text>
+            </FormErrorMessage>
+          </Box>
+        </FormControl>
+        <FormControl isInvalid={!!errors.password}>
+          <Box className={style('cardItem', 'password')}>
+            <Text fontSize="xs">Пароль</Text>
+            <InputGroup size="lg">
+              <Input
+                id="password"
+                pr="4.5rem"
+                type={show ? 'text' : 'password'}
+                placeholder="Enter password"
+                borderColor="gray.400"
+                variant="filled"
+                background="white"
+                size="lg"
+                _focus={{
+                  bg: 'white',
+                }}
+                {...register('password', {
+                  required: 'Обязательное поле',
+                  minLength: {
+                    value: 8,
+                    message: 'В пароле минимум 8 символов',
+                  },
+                })}
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={setShow.toggle}>
+                  {show ? 'Hide' : 'Show'}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+            <FormErrorMessage>
+              <Text ml="6">
+                {errors.password && errors.password.message + ''}
+              </Text>
+            </FormErrorMessage>
+          </Box>
+        </FormControl>
         <Link href="" className={style('cardItem', 'problems')}>
           <Text fontSize="xs">Проблемы со входом?</Text>
         </Link>
         <Box className={style('bottom')}>
           <Checkbox defaultChecked borderColor="borders">
-            Запомнить данные
+            <Text fontSize="xs">Запомнить данные </Text>
           </Checkbox>
           <IconButton
             className={style('cardItemDone')}
@@ -107,12 +132,12 @@ function AuthForm() {
             aria-label="Done"
             fontSize="28px"
             bgColor="buttonColor"
-            icon={loading ? <Spinner /> : <ArrowForwardIcon />}
-            onClick={handleSignIn}
+            icon={isSubmitting ? <Spinner /> : <ArrowForwardIcon />}
+            type="submit"
           />
         </Box>
       </Box>
-    </FormControl>
+    </form>
   );
 }
 
