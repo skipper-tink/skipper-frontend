@@ -1,14 +1,6 @@
-.Authentication {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 764px;
-  width: 96vw;
-}
-
 .logo {
+  height: 764px;
   width: 35%;
-  height: 100%;
   border-radius: 10px;
   background: #d9d9d9;
   background-image: url('../../assets/stars.svg');
@@ -18,7 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 50px;
 }
 
 .fullcard {
@@ -40,9 +31,6 @@
 }
 
 .header {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 130%;
   text-align: left;
   width: 384px;
   margin-bottom: 30px;
@@ -69,10 +57,6 @@
 .checkbox {
   margin-left: 24px;
   margin-top: 8px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .bottom {
@@ -94,13 +78,4 @@
   width: 384px;
   text-align: left;
   margin-top: 20px;
-}
-
-.link {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }

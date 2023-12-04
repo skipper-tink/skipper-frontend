@@ -8,14 +8,21 @@ import {
   IconButton,
   Spinner,
   FormControl,
+  Link,
+  Heading,
+  useBoolean,
+  Box,
+  Text,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import styles from './style.module.css';
+import classNames from 'classnames/bind';
+
+const style = classNames.bind(styles);
 
 function AuthForm() {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
+  const [show, setShow] = useBoolean();
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(false);
 
@@ -32,17 +39,25 @@ function AuthForm() {
     }
   };
   return (
-    <FormControl className={styles.formCard}>
-      <h1 className={styles.header}>Авторизация</h1>
-      <div className={styles.card}>
-        <div className={[styles.cardItem, styles.login].join(' ')}>
-          <p>Почта</p>
+    <FormControl className={style('formCard')}>
+      <Heading
+        as="h2"
+        fontWeight="Bold"
+        lineHeight="7"
+        fontSize="xl"
+        className={style('header')}
+      >
+        Авторизация
+      </Heading>
+      <Box className={style('card')}>
+        <Box className={style('cardItem', 'login')}>
+          <Text fontSize="xs">Почта</Text>
           <Input
             id="email"
             placeholder="Email"
             borderColor="gray.400"
             variant="filled"
-            background="#fff"
+            background="white"
             isRequired
             size="lg"
             colorScheme="whiteAlpha"
@@ -51,9 +66,9 @@ function AuthForm() {
               bg: 'white',
             }}
           />
-        </div>
-        <div className={[styles.cardItem, styles.password].join(' ')}>
-          <p>Пароль</p>
+        </Box>
+        <Box className={style('cardItem', 'password')}>
+          <Text fontSize="xs">Пароль</Text>
           <InputGroup size="lg">
             <Input
               id="password"
@@ -62,7 +77,7 @@ function AuthForm() {
               placeholder="Enter password"
               borderColor="gray.400"
               variant="filled"
-              background="#fff"
+              background="white"
               isRequired={true}
               size="lg"
               _focus={{
@@ -70,33 +85,33 @@ function AuthForm() {
               }}
             />
             <InputRightElement width="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={handleClick}>
+              <Button h="1.75rem" size="sm" onClick={setShow.toggle}>
                 {show ? 'Hide' : 'Show'}
               </Button>
             </InputRightElement>
           </InputGroup>
-        </div>
-        <a href="" className={[styles.cardItem, styles.problems].join(' ')}>
-          <p className={styles.link}>Проблемы со входом?</p>
-        </a>
-        <div className={styles.bottom}>
-          <Checkbox defaultChecked borderColor="#1D1B20">
+        </Box>
+        <Link href="" className={style('cardItem', 'problems')}>
+          <Text fontSize="xs">Проблемы со входом?</Text>
+        </Link>
+        <Box className={style('bottom')}>
+          <Checkbox defaultChecked borderColor="borders">
             Запомнить данные
           </Checkbox>
           <IconButton
-            className={styles.cardItemDone}
+            className={style('cardItemDone')}
             isRound={true}
             size="md"
             variant="solid"
-            color="#000"
+            color="black"
             aria-label="Done"
             fontSize="28px"
-            bgColor="#ACACAC"
+            bgColor="buttonColor"
             icon={loading ? <Spinner /> : <ArrowForwardIcon />}
             onClick={handleSignIn}
           />
-        </div>
-      </div>
+        </Box>
+      </Box>
     </FormControl>
   );
 }
