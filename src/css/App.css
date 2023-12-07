@@ -1,0 +1,22 @@
+#root {
+  background: linear-gradient(
+      90deg,
+      #acacac 41.67%,
+      rgba(172, 172, 172, 0.9) 47.92%,
+      rgba(172, 172, 172, 0) 100%
+    ),
+    #fff;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
