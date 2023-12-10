@@ -3,13 +3,13 @@ import './css/App.css';
 import Authentication from './components/Authentication';
 import NotFound from './components/NotFound';
 import { Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
+import AllEmployees from './components/AllEmployees';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<AllEmployees />} />
         <Route path="/Authentication" element={<Authentication />} />{' '}
         <Route path="*" element={<NotFound />} />
       </Routes>
