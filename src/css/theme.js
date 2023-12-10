@@ -14,6 +14,8 @@ const theme = extendTheme({
     md: '20px',
     lg: '28px',
     xl: '32px',
+    xxl: '48px',
+    xxxl: '60px',
   },
   radii: {
     sm: '20px',
