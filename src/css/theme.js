@@ -5,12 +5,24 @@ const theme = extendTheme({
     borders: '#1D1B20',
     black: '#000',
     white: '#fff',
+    gray: '#D9D9D9',
     buttonColor: '#ACACAC',
   },
   fontSizes: {
     xs: '14px',
+    sm: '18px',
     md: '20px',
-    xl: '24px',
+    lg: '28px',
+    xl: '32px',
+  },
+  radii: {
+    sm: '20px',
+    md: '28px',
+    lg: '36px',
+    xl: '44px',
+  },
+  sizes: {
+    md: '48px',
   },
 });
 
