@@ -25,6 +25,8 @@ const theme = extendTheme({
   },
   sizes: {
     md: '48px',
+    lg: '60px',
+    xl: '80px',
   },
 });
 
