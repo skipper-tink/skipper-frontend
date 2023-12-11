@@ -4,10 +4,12 @@ import Authentication from './components/Authentication';
 import NotFound from './components/NotFound';
 import { Route, Routes } from 'react-router-dom';
 import AllEmployees from './components/AllEmployees';
+import Sidebars from './components/Sidebars';
 
 function App() {
   return (
     <div className="App">
+      <Sidebars />
       <Routes>
         <Route path="/" element={<AllEmployees />} />
         <Route path="/Authentication" element={<Authentication />} />
