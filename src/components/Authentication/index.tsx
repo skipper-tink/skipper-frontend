@@ -8,21 +8,23 @@ const style = classNames.bind(styles);
 
 function Authentication() {
   return (
-    <Box w="96vw" h="764px" className={style('Authentication')}>
-      <HStack spacing="48px" alignItems="center" justifyContent="center">
-        <Box className={style('logo')}>
-          <img src="./tinkoffLogo.svg" alt="TINKOFFLOGO" />
-        </Box>
-        <div className={style('fullcard')}>
-          <AuthForm />
-          <div className={style('linkToRegister')}>
-            <Link href="" className={style('link')}>
-              <p>Я еще не зарегистрирован в системе</p>
-            </Link>
+    <div className={style('authentication')}>
+      <Box w="96vw" h="764px">
+        <HStack spacing="48px" alignItems="center" justifyContent="center">
+          <Box className={style('logo')}>
+            <img src="./tinkoffLogo.svg" alt="TINKOFFLOGO" />
+          </Box>
+          <div className={style('fullcard')}>
+            <AuthForm />
+            <div className={style('linkToRegister')}>
+              <Link href="" className={style('link')}>
+                <p>Я еще не зарегистрирован в системе</p>
+              </Link>
+            </div>
           </div>
-        </div>
-      </HStack>
-    </Box>
+        </HStack>
+      </Box>
+    </div>
   );
 }
 
