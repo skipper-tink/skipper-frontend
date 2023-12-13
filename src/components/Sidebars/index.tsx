@@ -16,7 +16,6 @@ const style = classNames.bind(styles);
 
 function Sidebars() {
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <div>
       {location.pathname !== '/Authentication' && (
