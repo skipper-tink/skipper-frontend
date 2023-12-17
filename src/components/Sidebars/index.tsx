@@ -53,18 +53,13 @@ function Sidebars() {
             bg="gray"
             p={5}
             paddingLeft={0}
+            paddingTop={'90px'}
             className={style('sidebar')}
             flexDirection={'column'}
             justify={'space-between'}
           >
             <Box>
               <Flex flexDirection={'column'}>
-                <IconButton
-                  aria-label="back"
-                  icon={<ArrowBackIcon />}
-                  alignSelf={'flex-end'}
-                  marginBottom="50px"
-                />
                 <Box
                   alignSelf={'center'}
                   display={'flex'}
