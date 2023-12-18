@@ -61,7 +61,7 @@ function AuthForm() {
               borderColor="gray.400"
               variant="filled"
               background="white"
-              size="lg"
+              size="md"
               colorScheme="whiteAlpha"
               _focus={{
                 bg: 'white',
@@ -82,7 +82,7 @@ function AuthForm() {
         <FormControl isInvalid={!!errors.password}>
           <Box className={style('cardItem', 'password')}>
             <Text fontSize="xs">Пароль</Text>
-            <InputGroup size="lg">
+            <InputGroup size="sm">
               <Input
                 id="password"
                 pr="4.5rem"
@@ -91,7 +91,7 @@ function AuthForm() {
                 borderColor="gray.400"
                 variant="filled"
                 background="white"
-                size="lg"
+                size="md"
                 _focus={{
                   bg: 'white',
                 }}
@@ -103,8 +103,8 @@ function AuthForm() {
                   },
                 })}
               />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={setShow.toggle}>
+              <InputRightElement width="4rem" h="2.5rem">
+                <Button size="xs" onClick={setShow.toggle}>
                   {show ? 'Hide' : 'Show'}
                 </Button>
               </InputRightElement>
@@ -130,7 +130,7 @@ function AuthForm() {
             variant="solid"
             color="black"
             aria-label="Done"
-            fontSize="28px"
+            fontSize="lg"
             bgColor="buttonColor"
             icon={isSubmitting ? <Spinner /> : <ArrowForwardIcon />}
             type="submit"

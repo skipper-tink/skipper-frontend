@@ -1,11 +1,5 @@
-#root {
-  background: linear-gradient(
-      90deg,
-      #acacac 41.67%,
-      rgba(172, 172, 172, 0.9) 47.92%,
-      rgba(172, 172, 172, 0) 100%
-    ),
-    #fff;
+#auth {
+  background: #fff;
   color: #000;
   font-size: 14px;
   font-style: normal;
