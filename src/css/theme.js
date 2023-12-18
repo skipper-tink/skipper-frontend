@@ -28,6 +28,11 @@ const theme = extendTheme({
     lg: '60px',
     xl: '80px',
   },
+  space: {
+    mdOne: '20px',
+    mdTwo: '24px',
+    mdThree: '28px',
+  },
 });
 
 export default theme;

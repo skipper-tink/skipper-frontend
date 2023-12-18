@@ -21,7 +21,7 @@ function LeftBar() {
         left="0"
         top="-10px"
         bg="gray"
-        p={5}
+        p={'md'}
         paddingLeft={0}
         paddingTop={'90px'}
         className={style('sidebar')}

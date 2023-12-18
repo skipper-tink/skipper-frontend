@@ -12,8 +12,8 @@ function Header() {
           position="absolute"
           top="0"
           left="0"
-          paddingRight="6"
-          paddingTop="7"
+          paddingRight="mdTwo"
+          paddingTop="mdThree"
           bg="buttonColor"
         >
           <Flex justifyContent="flex-end">
