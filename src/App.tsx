@@ -12,7 +12,7 @@ function App() {
       <Sidebars />
       <Routes>
         <Route path="/" element={<AllEmployees />} />
-        <Route path="/Authentication" element={<Authentication />} />
+        <Route path="/authentication" element={<Authentication />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

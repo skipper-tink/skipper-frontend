@@ -12,7 +12,6 @@ export default function NotFound() {
         size="lg"
         variant="solid"
         color="black"
-        type="submit"
         isRound={true}
         icon={<ArrowBackIcon />}
         onClick={() => navigate('..')}
@@ -21,11 +20,7 @@ export default function NotFound() {
       <Box>
         <Flex direction="column" align="center">
           <Text fontSize="xxxl" fontWeight="700">
-            404
-          </Text>
-          <Text fontSize="xxxl" fontWeight="700">
-            {' '}
-            Not Found
+            404 Not Found
           </Text>
         </Flex>
       </Box>

@@ -7,7 +7,7 @@ function Sidebars() {
   const location = useLocation();
   return (
     <div>
-      {location.pathname !== '/Authentication' && (
+      {location.pathname !== '/authentication' && (
         <div>
           <Header />
           <LeftBar />
