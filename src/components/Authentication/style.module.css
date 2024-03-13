@@ -1,3 +1,16 @@
+.authentication {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  background: linear-gradient(
+    90deg,
+    #acacac 41.67%,
+    rgba(172, 172, 172, 0.9) 47.92%,
+    rgba(172, 172, 172, 0) 100%
+  );
+}
+
 .logo {
   height: 764px;
   width: 35%;
