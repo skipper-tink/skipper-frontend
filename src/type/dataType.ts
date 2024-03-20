@@ -1,4 +1,4 @@
-export type Human = {
+export type Employee = {
   name: string;
   spec: string;
   grade: string;
