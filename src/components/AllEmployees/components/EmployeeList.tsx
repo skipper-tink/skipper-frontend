@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Flex, IconButton } from '@chakra-ui/react';
-import { SmallAddIcon } from '@chakra-ui/icons';
 import EmployeeCard from './EmployeeCard';
 import { Employee } from '../../../type/dataType';
+import { BsThreeDots } from 'react-icons/bs';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
 
@@ -35,7 +35,7 @@ function EmployeeList({ employees }: EmployeeListProps) {
           backgroundColor="gray"
           isRound={true}
           alignSelf={'flex-end'}
-          icon={<SmallAddIcon boxSize={'12'} />}
+          icon={<BsThreeDots />}
           onClick={() => console.log('123')}
         />
       </div>

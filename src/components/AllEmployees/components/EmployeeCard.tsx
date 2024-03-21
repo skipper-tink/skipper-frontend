@@ -18,7 +18,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
           className={style('employee-card__content')}
           justify="space-between"
         >
-          <Flex className={style('employee-card__content')}>
+          <Flex className={style('employee-card__personal')}>
             <Avatar
               size="xl"
               name={employee.name}
@@ -60,6 +60,32 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               </Box>
             ))}
           </Box>
+          <Flex maxW="220px" w="100%" gap="20px" className={style('')}>
+            <Box
+              className={style()}
+              maxW="100px"
+              maxH="100px"
+              w="100%"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              backgroundColor="grey"
+            >
+              {employee.rating}
+            </Box>
+            <Box
+              className={style()}
+              maxW="100px"
+              maxH="100px"
+              w="100%"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              backgroundColor="grey"
+            >
+              {employee.workHours}
+            </Box>
+          </Flex>
         </Flex>
       </Box>
     </div>
