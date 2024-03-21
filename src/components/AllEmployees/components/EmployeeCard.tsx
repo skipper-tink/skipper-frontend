@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Flex, Avatar, Text } from '@chakra-ui/react';
+import { Box, Flex, Avatar, Text, IconButton } from '@chakra-ui/react';
 import { Employee } from '../../../type/dataType';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
+import { AddIcon, SmallAddIcon } from '@chakra-ui/icons';
 
 const style = classNames.bind(styles);
 
@@ -48,7 +49,14 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               </Text>
             </Flex>
           </Flex>
-          <Box maxW="210px" maxH="90px" fontSize="12px" flexWrap="wrap">
+          <Box
+            maxW="230px"
+            maxH="100px"
+            overflowY="scroll"
+            fontSize="12px"
+            flexWrap="wrap"
+            className={style('employee-card__stack')}
+          >
             {employee.stack.map((tech: string, index: number) => (
               <Box
                 className={style('employee-card__stack-item')}
@@ -60,7 +68,12 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               </Box>
             ))}
           </Box>
-          <Flex maxW="220px" w="100%" gap="20px" className={style('')}>
+          <Flex
+            maxW="220px"
+            w="100%"
+            gap="20px"
+            className={style('employee-card__stats')}
+          >
             <Box
               className={style()}
               maxW="100px"
@@ -69,7 +82,8 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              backgroundColor="grey"
+              backgroundColor="white"
+              borderRadius="16px"
             >
               {employee.rating}
             </Box>
@@ -81,11 +95,30 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              backgroundColor="grey"
+              backgroundColor="white"
+              borderRadius="16px"
+              border="4px solid #d9d9d9"
             >
-              {employee.workHours}
+              {employee.workHours + 'ч.'}
             </Box>
           </Flex>
+          <IconButton
+            aria-label="Some button"
+            size="s"
+            variant="unstyled"
+            color="black"
+            isRound={true}
+            alignSelf={'center'}
+            icon={
+              <AddIcon
+                background="white"
+                padding="4px"
+                borderRadius="50%"
+                boxSize="24px"
+              />
+            }
+            onClick={() => console.log('123')}
+          />
         </Flex>
       </Box>
     </div>
