@@ -62,10 +62,29 @@
   padding: 4px 10px 4px 15px;
 }
 
+.employee-card__stack::-webkit-scrollbar {
+  width: 5px;
+  background-color: #acacac;
+}
+.employee-card__stack::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #d9d9d9;
+}
+.employee-card__stack::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #acacac;
+}
+
 .employee-card__stack-item {
   padding: 5px;
   border: 1px solid #f1f1f1;
   color: #f1f1f1;
   border-radius: 6px;
-  margin: 0 16px 8px 0;
+  margin: 0 8px 4px 0;
+}
+
+.employee-card__stats {
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
 }
