@@ -31,19 +31,19 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             >
               <Text
                 className={style('employee-card__personal-info-name')}
-                fontSize="14px"
+                fontSize="xs"
               >
                 {employee.name}
               </Text>
               <Text
                 className={style('employee-card__personal-info-spec')}
-                fontSize="12px"
+                fontSize="xxs"
               >
                 {employee.spec}
               </Text>
               <Text
                 className={style('employee-card__personal-info-grade')}
-                fontSize="12px"
+                fontSize="xxs"
               >
                 {employee.grade}
               </Text>
@@ -54,7 +54,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             maxW="250px"
             maxH="100px"
             overflowY="scroll"
-            fontSize="12px"
+            fontSize="xxs"
             flexWrap="wrap"
             className={style('employee-card__stack')}
           >
@@ -76,6 +76,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             w="100%"
             gap="20px"
             className={style('employee-card__stats')}
+            color="black"
           >
             <Box
               className={style()}
