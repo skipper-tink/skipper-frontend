@@ -29,13 +29,15 @@ function EmployeeList({ employees }: EmployeeListProps) {
       <div className={style('employee-list__button')}>
         <IconButton
           aria-label="Some button"
-          size="lg"
+          size="s"
+          ml="4px"
           variant="solid"
           color="black"
-          backgroundColor="gray"
+          backgroundColor="#acacac"
+          p="4px"
           isRound={true}
           alignSelf={'flex-end'}
-          icon={<BsThreeDots />}
+          icon={<BsThreeDots className="employee-list__button-icon" />}
           onClick={() => console.log('123')}
         />
       </div>

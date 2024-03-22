@@ -51,7 +51,7 @@ function AllEmpoyees() {
         h="100%"
         background="#D9D9D9"
       >
-        <Text>Filters</Text>
+        <Flex className={style('all-employees__filters')}> </Flex>
         <Flex align="center">
           <EmployeeList employees={Employees} />
         </Flex>
