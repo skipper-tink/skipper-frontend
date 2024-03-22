@@ -19,7 +19,7 @@ function EmployeeList({ employees }: EmployeeListProps) {
       align="center"
       justify="space-between"
       className={style('employee-list')}
-      w="1000px"
+      w="70vw"
     >
       <div className={style('employee-list__content')}>
         {employees.map((employee: Employee, index: number) => (
@@ -33,7 +33,7 @@ function EmployeeList({ employees }: EmployeeListProps) {
           ml="4px"
           variant="solid"
           color="black"
-          backgroundColor="#acacac"
+          backgroundColor="buttonColor"
           p="4px"
           isRound={true}
           alignSelf={'flex-end'}

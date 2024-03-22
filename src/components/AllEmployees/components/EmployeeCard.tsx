@@ -50,7 +50,8 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             </Flex>
           </Flex>
           <Box
-            maxW="230px"
+            w="16vw"
+            maxW="250px"
             maxH="100px"
             overflowY="scroll"
             fontSize="12px"
@@ -61,6 +62,8 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               <Box
                 className={style('employee-card__stack-item')}
                 display="inline-block"
+                color="lightGray"
+                border="1px solid lightGray"
                 textAlign="center"
                 key={index}
               >
@@ -97,7 +100,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               alignItems="center"
               backgroundColor="white"
               borderRadius="16px"
-              border="4px solid #d9d9d9"
+              border="4px solid gray"
             >
               {employee.workHours + 'ч.'}
             </Box>

@@ -11,10 +11,9 @@
 }
 
 .all-employees__filters {
-  width: 100%;
+  width: 61vw;
   max-width: 880px;
   margin-bottom: 10px;
-  background-color: #acacac;
   min-height: 50px;
   height: 100%;
   border-radius: 20px 20px 0 0;
@@ -26,7 +25,7 @@
 }
 
 .employee-list__content {
-  width: 100%;
+  width: 61vw;
   max-width: 880px;
 }
 
@@ -94,8 +93,6 @@
 
 .employee-card__stack-item {
   padding: 5px;
-  border: 1px solid #f1f1f1;
-  color: #f1f1f1;
   border-radius: 6px;
   margin: 0 8px 4px 0;
 }

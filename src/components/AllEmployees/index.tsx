@@ -45,13 +45,18 @@ function AllEmpoyees() {
     <div className={style('all-employees')}>
       <Box
         className={style('all-employees__content')}
+        w="70vw"
         maxW="1000px"
-        w="100%"
         maxH="760px"
         h="100%"
         background="#D9D9D9"
       >
-        <Flex className={style('all-employees__filters')}> </Flex>
+        <Flex
+          backgroundColor="buttonColor"
+          className={style('all-employees__filters')}
+        >
+          {' '}
+        </Flex>
         <Flex align="center">
           <EmployeeList employees={Employees} />
         </Flex>
