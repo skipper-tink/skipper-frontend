@@ -10,6 +10,7 @@ const style = classNames.bind(styles);
 function AllEmpoyees() {
   const Employees: Employee[] = [
     {
+      id: 0,
       name: 'Igor Silayev',
       spec: 'Frontend',
       grade: 'Middle',
@@ -18,25 +19,11 @@ function AllEmpoyees() {
       workHours: 7,
     },
     {
+      id: 1,
       name: 'Andrey Kukushkin',
       spec: 'BackEnd',
       grade: 'Junior',
-      stack: [
-        'TS',
-        'React',
-        'Java',
-        'Golang',
-        'Next.js',
-        'TS',
-        'React',
-        'Java',
-        'TS',
-        'React',
-        'Java',
-        'TS',
-        'React',
-        'Java',
-      ],
+      stack: ['TS', 'React', 'Java', 'Golang', 'Next.js', 'TS', 'React'],
       rating: '4.2',
       workHours: 9,
     },

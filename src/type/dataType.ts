@@ -1,4 +1,5 @@
 export type Employee = {
+  id: number;
   name: string;
   spec: string;
   grade: string;

@@ -23,7 +23,7 @@ function EmployeeList({ employees }: EmployeeListProps) {
     >
       <div className={style('employee-list__content')}>
         {employees.map((employee: Employee, index: number) => (
-          <EmployeeCard key={index} employee={employee} />
+          <EmployeeCard key={employee.id} employee={employee} />
         ))}
       </div>
       <div className={style('employee-list__button')}>

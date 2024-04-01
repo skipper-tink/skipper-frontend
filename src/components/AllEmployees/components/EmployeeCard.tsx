@@ -65,7 +65,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
                 color="lightGray"
                 border="1px solid lightGray"
                 textAlign="center"
-                key={index}
+                key={tech}
               >
                 <Text>{tech}</Text>
               </Box>
@@ -79,7 +79,6 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             color="black"
           >
             <Box
-              className={style()}
               maxW="100px"
               maxH="100px"
               w="100%"
@@ -92,7 +91,6 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               {employee.rating}
             </Box>
             <Box
-              className={style()}
               maxW="100px"
               maxH="100px"
               w="100%"
