@@ -3,7 +3,7 @@ import { Box, Flex, Avatar, Text, IconButton } from '@chakra-ui/react';
 import { Employee } from '../../../type/dataType';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
-import { AddIcon, SmallAddIcon } from '@chakra-ui/icons';
+import { AddIcon } from '@chakra-ui/icons';
 
 const style = classNames.bind(styles);
 
@@ -58,7 +58,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             flexWrap="wrap"
             className={style('employee-card__stack')}
           >
-            {employee.stack.map((tech: string, index: number) => (
+            {employee.stack.map((tech: string) => (
               <Box
                 className={style('employee-card__stack-item')}
                 display="inline-block"
@@ -110,7 +110,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             variant="unstyled"
             color="black"
             isRound={true}
-            alignSelf={'center'}
+            alignSelf="center"
             icon={
               <AddIcon
                 background="white"
