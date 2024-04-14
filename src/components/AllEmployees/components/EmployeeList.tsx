@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, IconButton } from '@chakra-ui/react';
+import { Flex, IconButton } from '@chakra-ui/react';
 import EmployeeCard from './EmployeeCard';
 import { Employee } from '../../../type/dataType';
 import { BsThreeDots } from 'react-icons/bs';
@@ -22,7 +22,7 @@ function EmployeeList({ employees }: EmployeeListProps) {
       w="70vw"
     >
       <div className={style('employee-list__content')}>
-        {employees.map((employee: Employee, index: number) => (
+        {employees.map((employee: Employee) => (
           <EmployeeCard key={employee.id} employee={employee} />
         ))}
       </div>
