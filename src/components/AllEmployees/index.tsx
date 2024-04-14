@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import EmployeeList from './components/EmployeeList';
 import { Employee } from '../../type/dataType';
 import styles from './style.module.css';

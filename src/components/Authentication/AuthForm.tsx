@@ -32,7 +32,7 @@ function AuthForm() {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  function onSubmit(values: any) {
+  function onSubmit() {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve('');
