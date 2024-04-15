@@ -1,3 +1,46 @@
-.profile__hours {
-  background: linear-gradient(180deg, #fff 0%, #d9d9d9 100%);
+.profile-card__personal {
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-card__personal-info {
+  gap: 5px;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 24vw;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: 5px #acacac solid;
+}
+
+.profile-card__personal-info > p {
+  display: block;
+  line-height: 16px;
+  box-sizing: border-box;
+}
+
+.profile-card__stack::-webkit-scrollbar {
+  width: 5px;
+  background-color: #acacac;
+}
+.profile-card__stack::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #d9d9d9;
+}
+.profile-card__stack::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #acacac;
+}
+
+.profile-card__stack-item {
+  padding: 5px;
+  border-radius: 6px;
+  margin: 0 8px 4px 0;
+}
+
+.profile-card__stats {
+  font-size: 22px;
+  font-weight: bold;
 }
