@@ -5,6 +5,7 @@ import NotFound from './components/NotFound';
 import { Route, Routes } from 'react-router-dom';
 import AllEmployees from './components/AllEmployees';
 import Layout from './components/Layout';
+import Signup from './components/Signup';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="employees" element={<AllEmployees />} />
         </Route>
-        <Route path="/Authentication" element={<Authentication />} />
+        <Route path="/authentication" element={<Authentication />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
