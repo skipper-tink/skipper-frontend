@@ -85,7 +85,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              backgroundColor="white"
+              background="linear-gradient(0deg, var(--chakra-colors-gray) 0%, #D9D9D9 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(221, 221, 221, 0) 100%);"
               borderRadius="16px"
             >
               {employee.rating}

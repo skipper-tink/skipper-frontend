@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Avatar, Textarea } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
 import PersonalPart from './components/PersonalPart';
@@ -18,7 +18,8 @@ function ProfilePage() {
       maxH="760px"
       h="85vh"
       background="white"
-      border="20px #d9d9d9 solid"
+      border="20px solid"
+      borderColor="gray"
       borderRadius="20px"
       p="3"
     >

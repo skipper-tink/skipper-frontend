@@ -31,7 +31,7 @@
 
 .employee-list__content > div {
   margin-bottom: 10px;
-  background-color: #acacac;
+  background-color: var(--chakra-colors-darkGray);
   padding: 40px 20px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .employee-card__personal-info > p {
-  background: #d9d9d9;
+  background: var(--chakra-colors-gray);
   border-radius: 0 50px 50px 0;
   display: block;
   line-height: 16px;
@@ -76,19 +76,6 @@
 .employee-card__personal-info-grade {
   max-width: 65px;
   padding: 4px 10px 4px 15px;
-}
-
-.employee-card__stack::-webkit-scrollbar {
-  width: 5px;
-  background-color: #acacac;
-}
-.employee-card__stack::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #d9d9d9;
-}
-.employee-card__stack::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background-color: #acacac;
 }
 
 .employee-card__stack-item {

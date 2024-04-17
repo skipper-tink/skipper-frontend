@@ -24,7 +24,7 @@ function ResumePart() {
         h="25vh"
         display="flex"
         alignItems="center"
-        border="1px #d9d9d9 solid"
+        border="5px var(--chakra-colors-gray) solid"
         borderRadius="20px"
         p="3"
       >
@@ -33,7 +33,7 @@ function ResumePart() {
         }
       </Text>
       <Tabs maxW="450px" w="100%" isFitted variant="unstyled">
-        <TabList>
+        <TabList borderBottom="2px var(--chakra-colors-gray) solid">
           <Tab
             fontSize="14px"
             _selected={{ color: 'black', fontWeight: '700' }}
@@ -75,9 +75,9 @@ function ResumePart() {
           </Tab>
         </TabList>
         <TabIndicator
-          mt="-1.5px"
+          mt="-2.5px"
           height="2px"
-          bg="#acacac"
+          bg="darkGray"
           borderRadius="1px"
         />
         {/* Поговорить с Сашей про навыки. Наполнить. */}

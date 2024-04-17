@@ -6,7 +6,7 @@ const theme = extendTheme({
     black: '#000',
     white: '#fff',
     gray: '#D9D9D9',
-    buttonColor: '#ACACAC',
+    darkGray: '#ACACAC',
     lightGray: '#F1F1F1',
   },
   fontSizes: {

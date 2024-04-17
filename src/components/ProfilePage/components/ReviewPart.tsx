@@ -7,7 +7,7 @@ function ReviewPart() {
       <Box display="flex" w="100%" gap="10px" alignItems="center">
         <Avatar
           size="xl"
-          border="5px #d9d9d9 solid"
+          border="5px var(--chakra-colors-gray) solid"
           name={'Иванов Иван Иванович'}
           src="https://bit.ly/broken-link"
         />
@@ -31,7 +31,7 @@ function ReviewPart() {
           >
             <Avatar
               size="xl"
-              border="5px #d9d9d9 solid"
+              border="5px var(--chakra-colors-gray) solid"
               name={'Иванов Иван Иванович'}
               src="https://bit.ly/broken-link"
             />

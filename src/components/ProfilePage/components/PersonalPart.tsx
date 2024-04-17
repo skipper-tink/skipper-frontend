@@ -15,7 +15,7 @@ function PersonalPart() {
         <Flex className={style('profile-card__personal')}>
           <Avatar
             size="xl"
-            border="5px #d9d9d9 solid"
+            border="5px var(--chakra-colors-gray) solid"
             name={'Иванов Иван Иванович'}
             src="https://bit.ly/broken-link"
           />
@@ -53,9 +53,8 @@ function PersonalPart() {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            backgroundColor="white"
+            background="linear-gradient(0deg, var(--chakra-colors-gray) 0%, var(--chakra-colors-gray) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(221, 221, 221, 0) 100%);"
             borderRadius="16px"
-            border="4px solid gray"
           >
             {'4.5'}
           </Box>

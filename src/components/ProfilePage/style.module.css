@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  border: 5px #acacac solid;
+  border: 5px var(--chakra-colors-darkGray) solid;
 }
 
 .profile-card__personal-info > p {

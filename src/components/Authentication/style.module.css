@@ -5,7 +5,7 @@
   display: flex;
   background: linear-gradient(
     90deg,
-    #acacac 41.67%,
+    var(--chakra-colors-darkGray) 41.67%,
     rgba(172, 172, 172, 0.9) 47.92%,
     rgba(172, 172, 172, 0) 100%
   );
@@ -15,7 +15,7 @@
   height: 764px;
   width: 35%;
   border-radius: 10px;
-  background: #d9d9d9;
+  background: var(--chakra-colors-gray);
   background-image: url('../../assets/stars.svg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -51,8 +51,8 @@
 
 .card {
   border-radius: 10px;
-  background: #d9d9d9;
-  border: 12px solid #acacac;
+  background: var(--chakra-colors-gray);
+  border: 12px solid var(--chakra-colors-darkGray);
   width: 408px;
   height: 328px;
   display: flex;
