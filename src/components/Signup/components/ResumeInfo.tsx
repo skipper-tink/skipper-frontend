@@ -83,7 +83,7 @@ function ResumeInfo() {
         Стек технологий:
       </Text>
       <Tabs maxW="450px" w="100%" isFitted variant="unstyled">
-        <TabList borderBottom="1px solid #d9d9d9;">
+        <TabList borderBottom="2px var(--chakra-colors-gray) solid">
           <Tab
             fontSize="14px"
             _selected={{ color: 'black', fontWeight: '700' }}
@@ -124,12 +124,7 @@ function ResumeInfo() {
             QA
           </Tab>
         </TabList>
-        <TabIndicator
-          mt="-1.5px"
-          height="2px"
-          bg="#acacac"
-          borderRadius="1px"
-        />
+        <TabIndicator mt="-2px" height="2px" bg="darkGray" borderRadius="1px" />
         {/* Поговорить с Сашей про навыки. Наполнить. */}
         <TabPanels>
           <TabPanel>
