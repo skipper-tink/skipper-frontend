@@ -31,7 +31,7 @@ function Signup() {
               p="3"
               colorScheme="blackAlpha"
             >
-              Зарегестрироваться
+              Зарегистрироваться
             </Button>
           </div>
         </HStack>
