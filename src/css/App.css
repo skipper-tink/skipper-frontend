@@ -1,6 +1,6 @@
 #auth {
-  background: #fff;
-  color: #000;
+  background: var(--chakra-colors-white);
+  color: var(--chakra-colors-black);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

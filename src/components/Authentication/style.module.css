@@ -30,7 +30,7 @@
   width: 50%;
   height: 764px;
   border-radius: 20px;
-  background: #fff;
+  background: var(--chakra-colors-white);
   display: flex;
   align-items: center;
   justify-content: center;

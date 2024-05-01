@@ -20,9 +20,9 @@ function ReviewPart() {
       </Box>
       {/* Позже здесь будут уже написанные отзывы. При подключении бэка - подправить. Пока просто как заглушка */}
       <Flex justifyContent="space-between" flexWrap="wrap" gap="10px">
-        {[...Array(5)].map((item, index) => (
+        {[...Array(5)].map((item) => (
           <Box
-            key={index}
+            key={item}
             display="flex"
             w="28vw"
             maxW="410px"
