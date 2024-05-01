@@ -30,7 +30,7 @@ function ResumeInfo() {
           borderRadius="6px"
           borderColor="gray"
           placeholder="Все"
-          color="#acacac"
+          color="darkGray"
           size="sm"
         >
           <option value="option1">Frontend</option>
@@ -50,7 +50,7 @@ function ResumeInfo() {
           borderRadius="6px"
           borderColor="gray"
           placeholder="Все"
-          color="#acacac"
+          color="darkGray"
           size="sm"
         >
           <option value="option1">Option 1</option>
@@ -70,7 +70,7 @@ function ResumeInfo() {
           borderRadius="6px"
           borderColor="gray"
           placeholder="Все"
-          color="#acacac"
+          color="darkGray"
           size="sm"
         >
           <option value="option1">Junior</option>
