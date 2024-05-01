@@ -131,7 +131,7 @@ function AuthForm() {
             color="black"
             aria-label="Done"
             fontSize="lg"
-            bgColor="buttonColor"
+            bgColor="darkGray"
             icon={isSubmitting ? <Spinner /> : <ArrowForwardIcon />}
             type="submit"
           />

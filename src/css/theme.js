@@ -6,8 +6,10 @@ const theme = extendTheme({
     black: '#000',
     white: '#fff',
     gray: '#D9D9D9',
-    buttonColor: '#ACACAC',
+    darkGray: '#ACACAC',
     lightGray: '#F1F1F1',
+    gradientGray:
+      'linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(221, 221, 221, 0) 100%);',
   },
   fontSizes: {
     xxs: '12px',

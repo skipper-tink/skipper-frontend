@@ -36,10 +36,10 @@ function AllEmpoyees() {
         maxW="1000px"
         maxH="760px"
         h="100%"
-        background="#D9D9D9"
+        background="gray"
       >
         <Flex
-          backgroundColor="buttonColor"
+          backgroundColor="darkGray"
           className={style('all-employees__filters')}
         >
           {' '}

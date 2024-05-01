@@ -13,7 +13,7 @@ function Header() {
         left="0"
         paddingRight="mdTwo"
         paddingTop="mdThree"
-        bg="buttonColor"
+        bg="darkGray"
       >
         <Flex justifyContent="flex-end">
           <IconButton
