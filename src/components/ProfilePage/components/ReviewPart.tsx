@@ -56,7 +56,7 @@ function ReviewPart() {
               variant="outline"
               borderRadius="6px"
               borderColor="gray"
-              placeholder="Оставьте свой отзыв на сотрудника здесь!"
+              disabled
             />
           </Box>
         ))}

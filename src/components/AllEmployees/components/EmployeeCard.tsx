@@ -85,7 +85,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              background="var(--chakra-colors-gray)"
+              background="var(--chakra-colors-gradientGray)"
               borderRadius="16px"
             >
               {employee.rating}
