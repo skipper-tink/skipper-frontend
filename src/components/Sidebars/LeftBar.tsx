@@ -47,7 +47,7 @@ function LeftBar() {
           </Box>
           <Box w="200px">
             <Box
-              bg="buttonColor"
+              bg="darkGray"
               h="48px"
               justifyContent={'center'}
               className={style('pages')}
@@ -60,12 +60,12 @@ function LeftBar() {
                 <HamburgerIcon /> Кандидаты
               </Text>
             </Box>
-            <Box bg="buttonColor" h="48px" className={style('pages')}>
+            <Box bg="darkGray" h="48px" className={style('pages')}>
               <Text fontWeight={700} className={style('page-name-and-icon')}>
                 <CheckIcon /> Пул задач
               </Text>
             </Box>
-            <Box bg="buttonColor" h="48px" className={style('pages')}>
+            <Box bg="darkGray" h="48px" className={style('pages')}>
               <Text fontWeight={700} className={style('page-name-and-icon')}>
                 <EditIcon />
                 Аналитика

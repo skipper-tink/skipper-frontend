@@ -33,7 +33,7 @@ function EmployeeList({ employees }: EmployeeListProps) {
           ml="4px"
           variant="solid"
           color="black"
-          backgroundColor="buttonColor"
+          backgroundColor="darkGray"
           p="4px"
           isRound={true}
           alignSelf={'flex-end'}

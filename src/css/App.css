@@ -1,6 +1,6 @@
 #auth {
-  background: #fff;
-  color: #000;
+  background: var(--chakra-colors-white);
+  color: var(--chakra-colors-black);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -13,4 +13,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--chakra-colors-darkGray);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--chakra-colors-gray);
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: var(--chakra-colors-darkGray);
 }
