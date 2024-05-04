@@ -11,8 +11,13 @@ import {
   TabIndicator,
   Input,
 } from '@chakra-ui/react';
+import { Skill } from '../../../type/dataType';
 
-function ResumeInfo() {
+interface ResumeInfoProps {
+  skills: Skill[];
+}
+
+function ResumeInfo({ skills }: ResumeInfoProps) {
   return (
     <Flex gap="15px" direction="column" w="100%" alignItems="center">
       <Text fontWeight="800" fontSize="24px">
@@ -109,7 +114,7 @@ function ResumeInfo() {
             fontSize="14px"
             _selected={{ color: 'black', fontWeight: '700' }}
           >
-            Android
+            DevOps
           </Tab>
           <Tab
             fontSize="14px"
@@ -125,25 +130,61 @@ function ResumeInfo() {
           </Tab>
         </TabList>
         <TabIndicator mt="-2px" height="2px" bg="darkGray" borderRadius="1px" />
-        {/* Поговорить с Сашей про навыки. Наполнить. */}
         <TabPanels>
-          <TabPanel>
-            <p>one!</p>
+          <TabPanel display="flex" flexWrap="wrap" gap="25px">
+            {skills.map((skill: Skill) => (
+              <p key={skill.name.concat(skill.specialization)}>{skill.name}</p>
+            ))}
           </TabPanel>
-          <TabPanel>
-            <p>two!</p>
+          <TabPanel display="flex" flexWrap="wrap" gap="25px">
+            {skills.map(
+              (skill: Skill) =>
+                skill.specialization === 'Backend' && (
+                  <Text key={skill.name.concat(skill.specialization)}>
+                    {skill.name}
+                  </Text>
+                ),
+            )}
           </TabPanel>
-          <TabPanel>
-            <p>three!</p>
+          <TabPanel display="flex" flexWrap="wrap" gap="25px">
+            {skills.map(
+              (skill: Skill) =>
+                skill.specialization === 'Frontend' && (
+                  <Text key={skill.name.concat(skill.specialization)}>
+                    {skill.name}
+                  </Text>
+                ),
+            )}
           </TabPanel>
-          <TabPanel>
-            <p>one!</p>
+          <TabPanel display="flex" flexWrap="wrap" gap="25px">
+            {skills.map(
+              (skill: Skill) =>
+                skill.specialization === 'DevOps' && (
+                  <Text key={skill.name.concat(skill.specialization)}>
+                    {skill.name}
+                  </Text>
+                ),
+            )}
           </TabPanel>
-          <TabPanel>
-            <p>two!</p>
+          <TabPanel display="flex" flexWrap="wrap" gap="25px">
+            {skills.map(
+              (skill: Skill) =>
+                skill.specialization === 'IOS' && (
+                  <Text key={skill.name.concat(skill.specialization)}>
+                    {skill.name}
+                  </Text>
+                ),
+            )}
           </TabPanel>
-          <TabPanel>
-            <p>three!</p>
+          <TabPanel display="flex" flexWrap="wrap" gap="25px">
+            {skills.map(
+              (skill: Skill) =>
+                skill.specialization === 'QA' && (
+                  <Text key={skill.name.concat(skill.specialization)}>
+                    {skill.name}
+                  </Text>
+                ),
+            )}
           </TabPanel>
         </TabPanels>
       </Tabs>
