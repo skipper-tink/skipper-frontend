@@ -9,3 +9,9 @@ export type Employee = {
   freeTimeUntilDate: string;
   userId: number;
 };
+
+export type Skill = {
+  id: number;
+  name: string;
+  specialization: string;
+}
