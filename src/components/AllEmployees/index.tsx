@@ -15,7 +15,7 @@ function AllEmployees() {
     const fetchEmployees = async () => {
       try {
         const response = await axios.get('/api/employees');
-        setEmployees((prevEmployees) => {
+        setEmployees(() => {
           const updatedEmployees = response.data.map((employee: Employee) => {
             employee.name = 'Пётр Сергеев';
             employee.stack = [
@@ -38,10 +38,8 @@ function AllEmployees() {
       }
     };
     fetchEmployees();
-    employees.forEach((el) => (el.name = 'Пётр Сергеев'));
   }, []);
 
-  console.log(employees);
   return (
     <div className={style('all-employees')}>
       <Box
