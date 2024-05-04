@@ -18,6 +18,14 @@ interface ResumeInfoProps {
 }
 
 function ResumeInfo({ skills }: ResumeInfoProps) {
+  const listOfSpecialization: string[] = [
+    'Все',
+    'Frontend',
+    'Backend',
+    'DevOps',
+    'QA',
+    'IOS',
+  ];
   return (
     <Flex gap="15px" direction="column" w="100%" alignItems="center">
       <Text fontWeight="800" fontSize="24px">
@@ -89,103 +97,35 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
       </Text>
       <Tabs maxW="450px" w="100%" isFitted variant="unstyled">
         <TabList borderBottom="2px var(--chakra-colors-gray) solid">
-          <Tab
-            fontSize="14px"
-            _selected={{ color: 'black', fontWeight: '700' }}
-          >
-            Все
-          </Tab>
-          <Tab
-            fontSize="14px"
-            _selected={{
-              color: 'black',
-              fontWeight: '700',
-            }}
-          >
-            Backend
-          </Tab>
-          <Tab
-            fontSize="14px"
-            _selected={{ color: 'black', fontWeight: '700' }}
-          >
-            Frontend
-          </Tab>
-          <Tab
-            fontSize="14px"
-            _selected={{ color: 'black', fontWeight: '700' }}
-          >
-            DevOps
-          </Tab>
-          <Tab
-            fontSize="14px"
-            _selected={{ color: 'black', fontWeight: '700' }}
-          >
-            IOS
-          </Tab>
-          <Tab
-            fontSize="14px"
-            _selected={{ color: 'black', fontWeight: '700' }}
-          >
-            QA
-          </Tab>
+          {listOfSpecialization.map((spec: string) => (
+            <Tab
+              fontSize="14px"
+              _selected={{ color: 'black', fontWeight: '700' }}
+              key={spec}
+            >
+              {spec}
+            </Tab>
+          ))}
         </TabList>
         <TabIndicator mt="-2px" height="2px" bg="darkGray" borderRadius="1px" />
         <TabPanels>
-          <TabPanel display="flex" flexWrap="wrap" gap="25px">
-            {skills.map((skill: Skill) => (
-              <p key={skill.name.concat(skill.specialization)}>{skill.name}</p>
-            ))}
-          </TabPanel>
-          <TabPanel display="flex" flexWrap="wrap" gap="25px">
-            {skills.map(
-              (skill: Skill) =>
-                skill.specialization === 'Backend' && (
-                  <Text key={skill.name.concat(skill.specialization)}>
-                    {skill.name}
-                  </Text>
-                ),
-            )}
-          </TabPanel>
-          <TabPanel display="flex" flexWrap="wrap" gap="25px">
-            {skills.map(
-              (skill: Skill) =>
-                skill.specialization === 'Frontend' && (
-                  <Text key={skill.name.concat(skill.specialization)}>
-                    {skill.name}
-                  </Text>
-                ),
-            )}
-          </TabPanel>
-          <TabPanel display="flex" flexWrap="wrap" gap="25px">
-            {skills.map(
-              (skill: Skill) =>
-                skill.specialization === 'DevOps' && (
-                  <Text key={skill.name.concat(skill.specialization)}>
-                    {skill.name}
-                  </Text>
-                ),
-            )}
-          </TabPanel>
-          <TabPanel display="flex" flexWrap="wrap" gap="25px">
-            {skills.map(
-              (skill: Skill) =>
-                skill.specialization === 'IOS' && (
-                  <Text key={skill.name.concat(skill.specialization)}>
-                    {skill.name}
-                  </Text>
-                ),
-            )}
-          </TabPanel>
-          <TabPanel display="flex" flexWrap="wrap" gap="25px">
-            {skills.map(
-              (skill: Skill) =>
-                skill.specialization === 'QA' && (
-                  <Text key={skill.name.concat(skill.specialization)}>
-                    {skill.name}
-                  </Text>
-                ),
-            )}
-          </TabPanel>
+          {listOfSpecialization.map((spec: string) => (
+            <TabPanel key={spec} display="flex" flexWrap="wrap" gap="25px">
+              {skills.map(
+                (skill: Skill) =>
+                  (spec === 'Все' && (
+                    <Text key={skill.name.concat(skill.specialization)}>
+                      {skill.name}
+                    </Text>
+                  )) ||
+                  (skill.specialization === spec && (
+                    <Text key={skill.name.concat(skill.specialization)}>
+                      {skill.name}
+                    </Text>
+                  )),
+              )}
+            </TabPanel>
+          ))}
         </TabPanels>
       </Tabs>
       <Flex
