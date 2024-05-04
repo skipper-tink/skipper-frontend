@@ -17,7 +17,7 @@ function Authentication() {
           <div className={style('fullcard')}>
             <AuthForm />
             <div className={style('linkToRegister')}>
-              <Link href="" className={style('link')}>
+              <Link href="/signup" className={style('link')}>
                 <p>Я еще не зарегистрирован в системе</p>
               </Link>
             </div>

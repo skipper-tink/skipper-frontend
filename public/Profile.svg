@@ -1,0 +1,20 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" r="40" fill="#D9D9D9"/>
+<circle cx="40" cy="40" r="40" fill="url(#paint0_linear_392_1708)"/>
+<ellipse cx="40" cy="40" rx="36" ry="36" fill="#ACACAC"/>
+<mask id="mask0_392_1708" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="72" height="72">
+<ellipse cx="40" cy="40" rx="36" ry="36" fill="#ACACAC"/>
+</mask>
+<g mask="url(#mask0_392_1708)">
+<circle cx="40" cy="30" r="12" fill="#D9D9D9"/>
+<path d="M24 59C24 50.1634 31.1634 43 40 43C48.8366 43 56 50.1634 56 59V80H24V59Z" fill="#D9D9D9"/>
+</g>
+<circle cx="40" cy="40" r="40" fill="white" fill-opacity="0.7"/>
+<path d="M48 41H41V48H39V41H32V39H39V32H41V39H48V41Z" fill="black"/>
+<defs>
+<linearGradient id="paint0_linear_392_1708" x1="40" y1="0" x2="40" y2="80" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.5"/>
+<stop offset="1" stop-color="#DDDDDD" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
