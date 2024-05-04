@@ -39,13 +39,13 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
                 className={style('employee-card__personal-info-spec')}
                 fontSize="xxs"
               >
-                {employee.spec}
+                {employee.specialization}
               </Text>
               <Text
                 className={style('employee-card__personal-info-grade')}
                 fontSize="xxs"
               >
-                {employee.grade}
+                {employee.qualification}
               </Text>
             </Flex>
           </Flex>
@@ -58,7 +58,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             flexWrap="wrap"
             className={style('employee-card__stack')}
           >
-            {employee.stack.map((tech: string) => (
+            {employee.stack?.map((tech: string) => (
               <Box
                 className={style('employee-card__stack-item')}
                 display="inline-block"
@@ -101,7 +101,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               borderRadius="16px"
               border="4px solid gray"
             >
-              {employee.workHours + 'ч.'}
+              {employee.freeTimePerWeek + 'ч.'}
             </Box>
           </Flex>
           <IconButton

@@ -1,33 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import EmployeeList from './components/EmployeeList';
 import { Employee } from '../../type/dataType';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
+import axios from 'axios';
 
 const style = classNames.bind(styles);
 
-function AllEmpoyees() {
-  const Employees: Employee[] = [
-    {
-      id: 0,
-      name: 'Igor Silayev',
-      spec: 'Frontend',
-      grade: 'Middle',
-      stack: ['TS', 'React', 'SCSS', 'SASS', 'Next.js'],
-      rating: '4.7',
-      workHours: 7,
-    },
-    {
-      id: 1,
-      name: 'Andrey Kukushkin',
-      spec: 'BackEnd',
-      grade: 'Junior',
-      stack: ['TS', 'React', 'Java', 'Golang', 'Next.js', 'TS', 'React'],
-      rating: '4.2',
-      workHours: 9,
-    },
-  ];
+function AllEmployees() {
+  const [employees, setEmployees] = useState<Employee[]>([]);
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await axios.get('/api/employees');
+        setEmployees((prevEmployees) => {
+          const updatedEmployees = response.data.map((employee: Employee) => {
+            employee.name = 'Пётр Сергеев';
+            employee.stack = [
+              'React',
+              'Angular',
+              'Vue',
+              'Apollo',
+              'GraphQL',
+              'Node',
+              'Docker',
+              'Git',
+            ];
+            employee.rating = '4.2';
+            return employee;
+          });
+          return updatedEmployees;
+        });
+      } catch (error) {
+        console.error('Ошибка при загрузке сотрудников:', error);
+      }
+    };
+    fetchEmployees();
+    employees.forEach((el) => (el.name = 'Пётр Сергеев'));
+  }, []);
+
+  console.log(employees);
   return (
     <div className={style('all-employees')}>
       <Box
@@ -45,11 +59,11 @@ function AllEmpoyees() {
           {' '}
         </Flex>
         <Flex align="center">
-          <EmployeeList employees={Employees} />
+          <EmployeeList employees={employees} />
         </Flex>
       </Box>
     </div>
   );
 }
 
-export default AllEmpoyees;
+export default AllEmployees;

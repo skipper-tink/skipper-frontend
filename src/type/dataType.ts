@@ -1,9 +1,11 @@
 export type Employee = {
   id: number;
   name: string;
-  spec: string;
-  grade: string;
+  specialization: string;
+  qualification: string;
   stack: string[];
   rating: string;
-  workHours: number;
+  freeTimePerWeek: number;
+  freeTimeUntilDate: string;
+  userId: number;
 };

@@ -25,12 +25,17 @@
 }
 
 .employee-list__content {
-  width: 61vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: calc(61vw + 10px);
   max-width: 880px;
+  max-height: 620px;
+  padding-right: 5px;
+  overflow-y: scroll;
 }
 
 .employee-list__content > div {
-  margin-bottom: 10px;
   background-color: #acacac;
   padding: 40px 20px;
 }
