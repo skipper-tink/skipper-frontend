@@ -17,9 +17,7 @@ function Signup() {
     const fetchSkills = async () => {
       try {
         const response = await axios.get('/api/skills');
-        setSkills((skills) => {
-          return response.data;
-        });
+        setSkills(response.data);
       } catch (error) {
         console.error('Ошибка при загрузке сотрудников:', error);
       }

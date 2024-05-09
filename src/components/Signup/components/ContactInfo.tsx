@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Text, Image, Input } from '@chakra-ui/react';
+import { Flex, Box, Text, Input } from '@chakra-ui/react';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
 
@@ -19,16 +19,14 @@ function ContactInfo() {
       justifyContent="center"
       gap="20px"
     >
-      <Text fontWeight="800" fontSize="24px">
-        Контактные данные:
-      </Text>
+      <Text className={style('signup__header')}>Контактные данные:</Text>
       <Flex
         alignItems="center"
         w="100%"
         maxW="300px"
         justifyContent="space-between"
       >
-        <Text fontWeight="700">Телефон:</Text>
+        <Text fontWeight="700">ФИО:</Text>
         <Input maxW="222px" borderRadius="6px" borderColor="gray" />
       </Flex>
       <Flex
