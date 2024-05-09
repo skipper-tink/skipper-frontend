@@ -7,10 +7,12 @@ import ContactInfo from './components/ContactInfo';
 import ResumeInfo from './components/ResumeInfo';
 import axios from 'axios';
 import { Skill, WorkInfo, Creds, Contacts } from '../../type/dataType';
+import { useNavigate } from 'react-router-dom';
 
 const style = classNames.bind(styles);
 
 function Signup() {
+  const navigate = useNavigate();
   const [skills, setSkills] = useState<Skill[]>([]);
   const [workInfo, setSelectedSkills] = useState<WorkInfo>({
     role: '',
@@ -54,10 +56,65 @@ function Signup() {
     fetchSkills();
   }, []);
 
-  const handleRegistration = () => {
-    console.log('Выбранные скиллы:', workInfo);
-    console.log('Login: ' + creds.login + ' pass: ' + creds.password);
-    console.log('Контакт. данные: ', contacts);
+  const handleRegistration = async () => {
+    try {
+      const userResponse = await axios.post('/api/registration/user', {
+        login: creds.login,
+        password: creds.password,
+      });
+
+      if (!userResponse.data) {
+        throw new Error('Ошибка при создании пользователя');
+      }
+
+      let endpoint, requestBody;
+      if (workInfo.role === 'employee') {
+        endpoint = `/api/registration/employee/${userResponse.data}`;
+        requestBody = {
+          name: contacts.fullname,
+          freeTimePerWeek: workInfo.freeHours,
+          specialization: workInfo.specialization,
+          qualification: workInfo.grade,
+          email: contacts.mail,
+          phoneNumber: contacts.telegram,
+        };
+      } else {
+        endpoint = `/api/registration/employer/${userResponse.data}`;
+        requestBody = {
+          name: contacts.fullname,
+          email: contacts.mail,
+          phoneNumber: contacts.telegram,
+        };
+      }
+      if (endpoint) {
+        const response = await axios.post(endpoint, requestBody);
+
+        if (workInfo.role === 'employee') {
+          workInfo.skills.forEach(async (skill) => {
+            const employeeSkillsRequest = {
+              skillId: skill.id,
+              employeeId: response.data,
+            };
+
+            const employeeSkillsEndpoint = '/api/employeeSkills';
+
+            try {
+              await axios.post(employeeSkillsEndpoint, employeeSkillsRequest);
+            } catch (error) {
+              console.error('Произошла ошибка при отправке запроса:', error);
+            }
+          });
+        }
+
+        if (!response.data) {
+          throw new Error('Ошибка при создании профиля');
+        }
+
+        navigate('/employees');
+      }
+    } catch (error) {
+      console.error('Произошла ошибка:', error);
+    }
   };
   return (
     <div className={style('signup')}>

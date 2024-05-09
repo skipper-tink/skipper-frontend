@@ -94,8 +94,8 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
           color="darkGray"
           size="sm"
         >
-          <option value="Работник">Работник</option>
-          <option value="Работодатель">Работодатель</option>
+          <option value="employee">Работник</option>
+          <option value="employer">Работодатель</option>
         </Select>
       </Flex>
       <Flex
