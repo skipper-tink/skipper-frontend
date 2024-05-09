@@ -11,7 +11,7 @@ import {
   TabIndicator,
   Input,
 } from '@chakra-ui/react';
-import { Skill } from '../../../type/dataType';
+import { Skill, WorkInfo } from '../../../type/dataType';
 import classNames from 'classnames/bind';
 import styles from '../style.module.css';
 
@@ -19,9 +19,50 @@ const style = classNames.bind(styles);
 
 interface ResumeInfoProps {
   skills: Skill[];
+  workInfo: WorkInfo;
+  onWorkInfoChange: (handleChangedWorkInfo: WorkInfo) => void;
 }
 
-function ResumeInfo({ skills }: ResumeInfoProps) {
+function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
+  const [listOfSkills, setListOfSkills] = useState<Skill[]>([]);
+  const [role, setRole] = useState<string>('');
+  const [specialization, setSpecialization] = useState<string>('');
+  const [grade, setGrade] = useState<string>('');
+  const [freehours, setHours] = useState<number>(0);
+
+  const toggleSkill = (skill: Skill) => {
+    const updatedSkills = [...listOfSkills];
+    const skillIndex = updatedSkills.indexOf(skill);
+    if (skillIndex === -1) {
+      updatedSkills.push(skill);
+    } else {
+      updatedSkills.splice(skillIndex, 1);
+    }
+    setListOfSkills(updatedSkills);
+    onWorkInfoChange({ ...workInfo, skills: updatedSkills });
+  };
+
+  const handleRoleChange = (event: string) => {
+    setRole(event);
+    onWorkInfoChange({ ...workInfo, role: event });
+  };
+
+  const handleSpecChange = (event: string) => {
+    setSpecialization(event);
+    onWorkInfoChange({ ...workInfo, specialization: event });
+  };
+
+  const handleGradeChange = (event: string) => {
+    setGrade(event);
+    onWorkInfoChange({ ...workInfo, grade: event });
+  };
+
+  const handleHoursChange = (event: string) => {
+    const hours = parseInt(event, 10);
+    setHours(hours);
+    onWorkInfoChange({ ...workInfo, freeHours: hours });
+  };
+
   const listOfSpecialization: string[] = [
     'Все',
     'Frontend',
@@ -30,18 +71,6 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
     'QA',
     'IOS',
   ];
-  const [listOfSkills, setListOfSkills] = useState<string[]>([]);
-
-  const toggleSkill = (skillName: string) => {
-    const updatedSkills = [...listOfSkills];
-    const skillIndex = updatedSkills.indexOf(skillName);
-    if (skillIndex === -1) {
-      updatedSkills.push(skillName);
-    } else {
-      updatedSkills.splice(skillIndex, 1);
-    }
-    setListOfSkills(updatedSkills);
-  };
 
   return (
     <Flex gap="15px" direction="column" w="100%" alignItems="center">
@@ -56,6 +85,8 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
       >
         <Text fontWeight="700">Роль:</Text>
         <Select
+          value={role}
+          onChange={(e) => handleRoleChange(e.target.value)}
           maxW="320px"
           borderRadius="6px"
           borderColor="gray"
@@ -63,8 +94,8 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
           color="darkGray"
           size="sm"
         >
-          <option value="option1">Работник</option>
-          <option value="option2">Работодатель</option>
+          <option value="Работник">Работник</option>
+          <option value="Работодатель">Работодатель</option>
         </Select>
       </Flex>
       <Flex
@@ -75,6 +106,8 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
       >
         <Text fontWeight="700">Специализация:</Text>
         <Select
+          value={specialization}
+          onChange={(e) => handleSpecChange(e.target.value)}
           maxW="320px"
           borderRadius="6px"
           borderColor="gray"
@@ -82,11 +115,11 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
           color="darkGray"
           size="sm"
         >
-          <option value="option1">Frontend</option>
-          <option value="option2">Backend</option>
-          <option value="option3">QA</option>
-          <option value="option4">DevOps</option>
-          <option value="option5">IOS</option>
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+          <option value="QA">QA</option>
+          <option value="DevOps">DevOps</option>
+          <option value="IOS">IOS</option>
         </Select>
       </Flex>
       <Flex
@@ -97,6 +130,8 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
       >
         <Text fontWeight="700">Грейд:</Text>
         <Select
+          value={grade}
+          onChange={(e) => handleGradeChange(e.target.value)}
           maxW="320px"
           borderRadius="6px"
           borderColor="gray"
@@ -104,10 +139,10 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
           color="darkGray"
           size="sm"
         >
-          <option value="option1">Junior</option>
-          <option value="option2">Middle</option>
-          <option value="option3">Senior</option>
-          <option value="option3">Tech Lead</option>
+          <option value="Junior">Junior</option>
+          <option value="Middle">Middle</option>
+          <option value="Senior">Senior</option>
+          <option value="TechLead">Tech Lead</option>
         </Select>
       </Flex>
       <Text className={style('signup__header')}>Стек технологий:</Text>
@@ -141,9 +176,9 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
                       padding="8px"
                       key={skill.name.concat(skill.specialization)}
                       className={style(
-                        listOfSkills.includes(skill.name) ? 'selected' : 'elem',
+                        listOfSkills.includes(skill) ? 'selected' : 'elem',
                       )}
-                      onClick={() => toggleSkill(skill.name)}
+                      onClick={() => toggleSkill(skill)}
                     >
                       {skill.name}
                     </Text>
@@ -153,9 +188,9 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
                       cursor="pointer"
                       key={skill.name.concat(skill.specialization)}
                       className={style({
-                        selected: listOfSkills.includes(skill.name),
+                        selected: listOfSkills.includes(skill),
                       })}
-                      onClick={() => toggleSkill(skill.name)}
+                      onClick={() => toggleSkill(skill)}
                     >
                       {skill.name}
                     </Text>
@@ -173,6 +208,8 @@ function ResumeInfo({ skills }: ResumeInfoProps) {
       >
         <Text className={style('signup__header')}>Свободные часы:</Text>
         <Input
+          value={freehours}
+          onChange={(e) => handleHoursChange(e.target.value)}
           type="number"
           maxW="65px"
           borderRadius="6px"
