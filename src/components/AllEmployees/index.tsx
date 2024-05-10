@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import EmployeeList from './components/EmployeeList';
-import { Employee } from '../../type/dataType';
+import { Employee, Skill } from '../../type/dataType';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
 import axios from 'axios';
@@ -15,24 +15,18 @@ function AllEmployees() {
     const fetchEmployees = async () => {
       try {
         const response = await axios.get('/api/employees');
-        setEmployees(() => {
-          const updatedEmployees = response.data.map((employee: Employee) => {
-            employee.name = 'Пётр Сергеев';
-            employee.stack = [
-              'React',
-              'Angular',
-              'Vue',
-              'Apollo',
-              'GraphQL',
-              'Node',
-              'Docker',
-              'Git',
-            ];
-            employee.rating = '4.2';
-            return employee;
-          });
-          return updatedEmployees;
-        });
+        const updatedEmployees = await Promise.all(
+          response.data.map(async (employee: Employee) => {
+            const employeeSkillsResponse = await axios.get(
+              `/api/employee/${employee.id}/skills`,
+            );
+            const skills = employeeSkillsResponse.data.map(
+              (el: Skill) => el.name,
+            );
+            return { ...employee, stack: skills };
+          }),
+        );
+        setEmployees(updatedEmployees);
       } catch (error) {
         console.error('Ошибка при загрузке сотрудников:', error);
       }

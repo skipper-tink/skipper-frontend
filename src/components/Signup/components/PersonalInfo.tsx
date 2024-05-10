@@ -81,6 +81,7 @@ function PersonalInfo({ creds, onCredsChanged }: PersonalInfoProps) {
             onChange={handlePasswordChange}
             borderRadius="6px"
             type={show ? 'text' : 'password'}
+            isInvalid={password.length < 5}
           />
           <InputRightElement>
             <Icon
