@@ -13,35 +13,39 @@ import {
   useBoolean,
   Box,
   Text,
-  FormErrorMessage,
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
-import { useForm } from 'react-hook-form';
+import { Creds } from '../../type/dataType';
+import validator from 'validator';
 
 const style = classNames.bind(styles);
 
-function AuthForm() {
-  const [show, setShow] = useBoolean();
-  const navigate = useNavigate();
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm();
+interface AuthFormProps {
+  creds: Creds;
+  onCredsChanged: (creds: Creds) => void;
+  onAuth: () => Promise<void>;
+  load: boolean;
+}
 
-  function onSubmit() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve('');
-        navigate('..');
-      }, 3000);
-    });
-  }
+function AuthForm({ creds, onCredsChanged, onAuth, load }: AuthFormProps) {
+  const [show, setShow] = useBoolean();
+  const loading = load;
+  const [login, setLogin] = React.useState(creds.login);
+  const [password, setPassword] = React.useState(creds.password);
+
+  const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin(event.target.value);
+    onCredsChanged({ ...creds, login: event.target.value });
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+    onCredsChanged({ ...creds, password: event.target.value });
+  };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form>
       <Heading
         as="h2"
         fontWeight="Bold"
@@ -52,56 +56,41 @@ function AuthForm() {
         Авторизация
       </Heading>
       <Box className={style('card')}>
-        <FormControl className={style('formCard')} isInvalid={!!errors.email}>
+        <FormControl className={style('formCard')}>
           <Box className={style('cardItem', 'login')}>
             <Text fontSize="xs">Почта</Text>
             <Input
-              id="email"
+              value={login}
+              onChange={handleLoginChange}
               placeholder="Email"
-              borderColor="gray.400"
+              borderRadius="6px"
+              borderColor="gray"
               variant="filled"
-              background="white"
               size="md"
-              colorScheme="whiteAlpha"
               _focus={{
                 bg: 'white',
               }}
-              {...register('email', {
-                required: 'This is required',
-                minLength: {
-                  value: 6,
-                  message: 'Введите почту вида: exp@gmail.com',
-                },
-              })}
+              isInvalid={!validator.isEmail(login)}
             />
-            <FormErrorMessage>
-              <Text ml="6">{errors.email && errors.email.message + ''}</Text>
-            </FormErrorMessage>
           </Box>
         </FormControl>
-        <FormControl isInvalid={!!errors.password}>
+        <FormControl>
           <Box className={style('cardItem', 'password')}>
             <Text fontSize="xs">Пароль</Text>
             <InputGroup size="sm">
               <Input
-                id="password"
+                value={password}
+                onChange={handlePasswordChange}
                 pr="4.5rem"
                 type={show ? 'text' : 'password'}
-                placeholder="Enter password"
-                borderColor="gray.400"
+                placeholder="Password"
+                borderRadius="6px"
+                borderColor="gray"
                 variant="filled"
-                background="white"
                 size="md"
                 _focus={{
                   bg: 'white',
                 }}
-                {...register('password', {
-                  required: 'Обязательное поле',
-                  minLength: {
-                    value: 8,
-                    message: 'В пароле минимум 8 символов',
-                  },
-                })}
               />
               <InputRightElement width="4rem" h="2.5rem">
                 <Button size="xs" onClick={setShow.toggle}>
@@ -109,11 +98,6 @@ function AuthForm() {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <FormErrorMessage>
-              <Text ml="6">
-                {errors.password && errors.password.message + ''}
-              </Text>
-            </FormErrorMessage>
           </Box>
         </FormControl>
         <Link href="" className={style('cardItem', 'problems')}>
@@ -126,14 +110,14 @@ function AuthForm() {
           <IconButton
             className={style('cardItemDone')}
             isRound={true}
+            onClick={onAuth}
             size="md"
             variant="solid"
             color="black"
             aria-label="Done"
             fontSize="lg"
             bgColor="darkGray"
-            icon={isSubmitting ? <Spinner /> : <ArrowForwardIcon />}
-            type="submit"
+            icon={loading ? <Spinner /> : <ArrowForwardIcon />}
           />
         </Box>
       </Box>
