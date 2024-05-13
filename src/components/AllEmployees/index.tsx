@@ -14,11 +14,11 @@ function AllEmployees() {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get('/api/employees');
+        const response = await axios.get('http://localhost:8080/api/employees');
         const updatedEmployees = await Promise.all(
           response.data.map(async (employee: Employee) => {
             const employeeSkillsResponse = await axios.get(
-              `/api/employee/${employee.id}/skills`,
+              `http://localhost:8080/api/employee/${employee.id}/skills`,
             );
             const skills = employeeSkillsResponse.data.map(
               (el: Skill) => el.name,
