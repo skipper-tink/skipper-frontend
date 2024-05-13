@@ -4,9 +4,12 @@ export type Employee = {
   specialization: string;
   qualification: string;
   stack: string[];
-  rating: string;
+  rating?: string;
   freeTimePerWeek: number;
-  freeTimeUntilDate: string;
+  freeTimeUntilDate?: string;
+  email?: string;
+  phoneNumber?: string;
+  description?: string;
   userId: number;
 };
 
