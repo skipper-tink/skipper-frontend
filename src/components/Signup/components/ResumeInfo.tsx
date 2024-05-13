@@ -106,6 +106,7 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
       >
         <Text fontWeight="700">Специализация:</Text>
         <Select
+          disabled={role === 'employer'}
           value={specialization}
           onChange={(e) => handleSpecChange(e.target.value)}
           maxW="320px"
@@ -130,6 +131,7 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
       >
         <Text fontWeight="700">Грейд:</Text>
         <Select
+          disabled={role === 'employer'}
           value={grade}
           onChange={(e) => handleGradeChange(e.target.value)}
           maxW="320px"
@@ -156,6 +158,7 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
         <TabList borderBottom="2px var(--chakra-colors-gray) solid">
           {listOfSpecialization.map((spec: string) => (
             <Tab
+              isDisabled={role === 'employer'}
               fontSize="14px"
               _selected={{ color: 'black', fontWeight: '700' }}
               key={spec}
@@ -173,6 +176,7 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
                   (spec === 'Все' && (
                     <Text
                       cursor="pointer"
+                      pointerEvents={role === 'employer' ? 'none' : undefined}
                       padding="8px"
                       key={skill.name.concat(skill.specialization)}
                       className={style(
@@ -186,6 +190,7 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
                   (skill.specialization === spec && (
                     <Text
                       cursor="pointer"
+                      pointerEvents={role === 'employer' ? 'none' : undefined}
                       key={skill.name.concat(skill.specialization)}
                       className={style({
                         selected: listOfSkills.includes(skill),
@@ -208,6 +213,7 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
       >
         <Text className={style('signup__header')}>Свободные часы:</Text>
         <Input
+          disabled={role === 'employer'}
           value={freehours}
           onChange={(e) => handleHoursChange(e.target.value)}
           type="number"

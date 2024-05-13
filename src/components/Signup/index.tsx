@@ -47,7 +47,7 @@ function Signup() {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await axios.get('/api/skills');
+        const response = await axios.get('http://localhost:8080/api/skills');
         setSkills(response.data);
       } catch (error) {
         console.error('Ошибка при скиллов:', error);
@@ -58,10 +58,13 @@ function Signup() {
 
   const handleRegistration = async () => {
     try {
-      const userResponse = await axios.post('/api/registration/user', {
-        login: creds.login,
-        password: creds.password,
-      });
+      const userResponse = await axios.post(
+        'http://localhost:8080/api/registration/user',
+        {
+          login: creds.login,
+          password: creds.password,
+        },
+      );
 
       if (!userResponse.data) {
         throw new Error('Ошибка при создании пользователя');
@@ -69,7 +72,7 @@ function Signup() {
 
       let endpoint, requestBody;
       if (workInfo.role === 'employee') {
-        endpoint = `/api/registration/employee/${userResponse.data}`;
+        endpoint = `http://localhost:8080/api/registration/employee/${userResponse.data}`;
         requestBody = {
           name: contacts.fullname,
           freeTimePerWeek: workInfo.freeHours,
@@ -79,7 +82,7 @@ function Signup() {
           phoneNumber: contacts.telegram,
         };
       } else {
-        endpoint = `/api/registration/employer/${userResponse.data}`;
+        endpoint = `http://localhost:8080/api/registration/employer/${userResponse.data}`;
         requestBody = {
           name: contacts.fullname,
           email: contacts.mail,
@@ -90,27 +93,24 @@ function Signup() {
         const response = await axios.post(endpoint, requestBody);
 
         if (workInfo.role === 'employee') {
+          const skills: number[] = [];
           workInfo.skills.forEach(async (skill) => {
-            const employeeSkillsRequest = {
-              skillId: skill.id,
-              employeeId: response.data,
-            };
-
-            const employeeSkillsEndpoint = '/api/employeeSkills';
-
-            try {
-              await axios.post(employeeSkillsEndpoint, employeeSkillsRequest);
-            } catch (error) {
-              console.error('Произошла ошибка при отправке запроса:', error);
-            }
+            skills.push(skill.id);
           });
+          const employeeSkillsEndpoint = `http://localhost:8080/api/employee/${response.data}/skills`;
+
+          try {
+            await axios.post(employeeSkillsEndpoint, skills);
+          } catch (error) {
+            console.error('Произошла ошибка при отправке запроса:', error);
+          }
         }
 
         if (!response.data) {
           throw new Error('Ошибка при создании профиля');
         }
 
-        navigate('/employees');
+        navigate('/');
       }
     } catch (error) {
       console.error('Произошла ошибка:', error);

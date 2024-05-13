@@ -24,10 +24,13 @@ function Authentication() {
   const handleAuthentication = async () => {
     try {
       setLoading(true);
-      const response = await axios.post('/api/authentication', {
-        login: creds.login,
-        password: creds.password,
-      });
+      const response = await axios.post(
+        'http://localhost:8080/api/authentication',
+        {
+          login: creds.login,
+          password: creds.password,
+        },
+      );
 
       if (response.status === 200) navigate('/employees');
     } catch (error) {
