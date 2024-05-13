@@ -8,10 +8,13 @@ import ResumeInfo from './components/ResumeInfo';
 import axios from 'axios';
 import { Skill, WorkInfo, Creds, Contacts } from '../../type/dataType';
 import { useNavigate } from 'react-router-dom';
+import { useUserStore } from '../../stores/user.store';
 
 const style = classNames.bind(styles);
 
 function Signup() {
+  const userStore = useUserStore();
+  const setName = userStore.setName;
   const navigate = useNavigate();
   const [skills, setSkills] = useState<Skill[]>([]);
   const [workInfo, setSelectedSkills] = useState<WorkInfo>({
@@ -110,6 +113,7 @@ function Signup() {
           throw new Error('Ошибка при создании профиля');
         }
 
+        setName(contacts.fullname);
         navigate('/');
       }
     } catch (error) {

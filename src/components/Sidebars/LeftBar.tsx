@@ -8,10 +8,12 @@ import {
 } from '@chakra-ui/icons';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
+import { useUserStore } from '../../stores/user.store';
 
 const style = classNames.bind(styles);
 
 function LeftBar() {
+  const userStore = useUserStore();
   return (
     <Flex
       w="20%"
@@ -38,11 +40,11 @@ function LeftBar() {
           >
             <Avatar
               size="xl"
-              name="Андрей Шелягин"
+              name={userStore.name}
               src="https://bit.ly/broken-link"
             />
             <Text fontSize={'xs'} fontWeight={400}>
-              Андрей Шелягин
+              {userStore.name}
             </Text>
           </Box>
           <Box w="200px">
