@@ -10,7 +10,7 @@ import { Employee } from '../../../type/dataType';
 const style = classNames.bind(styles);
 
 interface PersonalPartProps {
-  personalInfo?: Employee;
+  personalInfo: Employee;
 }
 
 function PersonalPart({ personalInfo }: PersonalPartProps) {
@@ -63,7 +63,7 @@ function PersonalPart({ personalInfo }: PersonalPartProps) {
             background="linear-gradient(0deg, var(--chakra-colors-gray) 0%, var(--chakra-colors-gray) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(221, 221, 221, 0) 100%);"
             borderRadius="16px"
           >
-            {personalInfo?.rating}
+            {Math.round(parseFloat(personalInfo.rating ?? '0') * 100) / 100}
           </Box>
           <Box
             maxW="100px"

@@ -38,3 +38,11 @@ export type WorkInfo = {
   freeHours: number;
   skills: Skill[];
 };
+
+export type Feedback = {
+  comment: string;
+  demandEmpoyeeId: number;
+  id: number;
+  rating: number;
+  reviewerName: string;
+};

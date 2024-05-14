@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import PersonalPart from './components/PersonalPart';
 import ResumePart from './components/ResumePart';
 import ReviewPart from './components/ReviewPart';
-import { Employee, Skill } from '../../type/dataType';
+import { Employee, Feedback, Skill } from '../../type/dataType';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -24,8 +24,10 @@ function ProfilePage() {
     userId: 0,
   });
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
   const [loadingEmployee, setLoadingEmployee] = useState(true);
   const [loadingSkills, setLoadingSkills] = useState(true);
+  const [loadingFeedbacks, setLoadingFeedbacks] = useState(true);
 
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -47,7 +49,6 @@ function ProfilePage() {
           `http://localhost:8080/api/employee/${id}/skills`,
         );
         setSkills(response.data);
-        console.log('skills', response.data);
       } catch (error) {
         console.error('Ошибка при загрузке навыков сотрудника:', error);
       } finally {
@@ -55,9 +56,37 @@ function ProfilePage() {
       }
     };
 
+    const fetchFeedback = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/feedbacks/${id}`,
+        );
+        setFeedbacks(response.data);
+      } catch (error) {
+        console.error('Ошибка при загрузке навыков сотрудника:', error);
+      } finally {
+        setLoadingFeedbacks(false);
+      }
+    };
+
     fetchEmployee();
     fetchSkills();
-  }, [id]);
+    fetchFeedback();
+  }, [id, feedbacks]);
+
+  const sendFeedback = async (comment: string, reviewerName: string) => {
+    try {
+      const res = await axios.post('http://localhost:8080/api/feedbacks', {
+        rating: 0,
+        comment,
+        demandEmployeeId: id,
+        reviewerName,
+      });
+      console.log(res);
+    } catch (error) {
+      console.error('Ошибка при отправке отзыва:', error);
+    }
+  };
 
   return (
     <Flex
@@ -84,8 +113,9 @@ function ProfilePage() {
               skills={skills}
             />
           )}
-
-          <ReviewPart />
+          {(loadingFeedbacks && <Spinner />) || (
+            <ReviewPart sendFeedback={sendFeedback} feedbacks={feedbacks} />
+          )}
         </div>
       </div>
     </Flex>
