@@ -18,8 +18,7 @@
 .profile-card__personal-info {
   gap: 5px;
   flex: 0 0 auto;
-  width: 100%;
-  max-width: 24vw;
+  width: 24vw;
   height: 100px;
   align-items: center;
   justify-content: center;
