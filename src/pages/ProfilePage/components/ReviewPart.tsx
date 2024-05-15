@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Flex, Box, Avatar, Textarea, Button } from '@chakra-ui/react';
+import { useUserStore } from '../../../stores/user.store';
+import { Feedback } from '../../../type/dataType';
 
-function ReviewPart() {
+interface ReviewPartProps {
+  feedbacks: Feedback[];
+  sendFeedback: (comment: string, reviewerName: string) => void;
+}
+
+function ReviewPart({ feedbacks, sendFeedback }: ReviewPartProps) {
+  const userStore = useUserStore();
+  const [comment, setComment] = useState('');
+
+  const handleSendFeedback = () => {
+    sendFeedback(comment, userStore.name);
+    setComment('');
+  };
   return (
     <Flex direction="column" gap="20px">
       <Box
@@ -15,7 +29,7 @@ function ReviewPart() {
           <Avatar
             size="xl"
             border="5px var(--chakra-colors-gray) solid"
-            name={'Иванов Иван Иванович'}
+            name={userStore.name}
             src="https://bit.ly/broken-link"
           />
           <Textarea
@@ -23,6 +37,8 @@ function ReviewPart() {
             borderRadius="6px"
             borderColor="gray"
             placeholder="Оставьте свой отзыв на сотрудника здесь!"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
           />
         </Flex>
         <Button
@@ -31,15 +47,15 @@ function ReviewPart() {
           variant="solid"
           borderRadius="4px"
           fontSize="14px"
+          onClick={handleSendFeedback}
         >
           Отправить
         </Button>
       </Box>
-      {/* Позже здесь будут уже написанные отзывы. При подключении бэка - подправить. Пока просто как заглушка */}
       <Flex justifyContent="space-between" flexWrap="wrap" gap="10px">
-        {[...Array(5)].map((item) => (
+        {feedbacks.map((item) => (
           <Box
-            key={item}
+            key={item.id}
             display="flex"
             w="28vw"
             maxW="410px"
@@ -49,13 +65,14 @@ function ReviewPart() {
             <Avatar
               size="xl"
               border="5px var(--chakra-colors-gray) solid"
-              name={'Иванов Иван Иванович'}
+              name={item.reviewerName}
               src="https://bit.ly/broken-link"
             />
             <Textarea
               variant="outline"
               borderRadius="6px"
               borderColor="gray"
+              placeholder={item.comment}
               disabled
             />
           </Box>

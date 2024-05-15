@@ -4,6 +4,7 @@ import { Employee } from '../../../type/dataType';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
 import { AddIcon } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
 
 const style = classNames.bind(styles);
 
@@ -19,36 +20,42 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
           className={style('employee-card__content')}
           justify="space-between"
         >
-          <Flex className={style('employee-card__personal')}>
-            <Avatar
-              size="xl"
-              name={employee.name}
-              src="https://bit.ly/broken-link"
-            />
-            <Flex
-              className={style('employee-card__personal-info')}
-              direction="column"
-            >
-              <Text
-                className={style('employee-card__personal-info-name')}
-                fontSize="xs"
+          <Link
+            to={`/profile/${employee.id}`}
+            className={style('employee-card')}
+          >
+            <Flex className={style('employee-card__personal')}>
+              <Avatar
+                size="xl"
+                name={employee.name}
+                src="https://bit.ly/broken-link"
+              />
+              <Flex
+                className={style('employee-card__personal-info')}
+                direction="column"
               >
-                {employee.name}
-              </Text>
-              <Text
-                className={style('employee-card__personal-info-spec')}
-                fontSize="xxs"
-              >
-                {employee.spec}
-              </Text>
-              <Text
-                className={style('employee-card__personal-info-grade')}
-                fontSize="xxs"
-              >
-                {employee.grade}
-              </Text>
+                <Text
+                  className={style('employee-card__personal-info-name')}
+                  fontSize="xs"
+                >
+                  {employee.name}
+                </Text>
+                <Text
+                  className={style('employee-card__personal-info-spec')}
+                  fontSize="xxs"
+                >
+                  {employee.specialization}
+                </Text>
+                <Text
+                  className={style('employee-card__personal-info-grade')}
+                  fontSize="xxs"
+                >
+                  {employee.qualification}
+                </Text>
+              </Flex>
             </Flex>
-          </Flex>
+          </Link>
+
           <Box
             w="16vw"
             maxW="250px"
@@ -58,7 +65,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             flexWrap="wrap"
             className={style('employee-card__stack')}
           >
-            {employee.stack.map((tech: string) => (
+            {employee.stack?.map((tech: string) => (
               <Box
                 className={style('employee-card__stack-item')}
                 display="inline-block"
@@ -101,7 +108,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               borderRadius="16px"
               border="4px solid gray"
             >
-              {employee.workHours + 'ч.'}
+              {employee.freeTimePerWeek + 'ч.'}
             </Box>
           </Flex>
           <IconButton

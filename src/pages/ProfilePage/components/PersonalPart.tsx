@@ -5,10 +5,15 @@ import classNames from 'classnames/bind';
 import { AddIcon } from '@chakra-ui/icons';
 import { FaRegBookmark } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
+import { Employee } from '../../../type/dataType';
 
 const style = classNames.bind(styles);
 
-function PersonalPart() {
+interface PersonalPartProps {
+  personalInfo: Employee;
+}
+
+function PersonalPart({ personalInfo }: PersonalPartProps) {
   return (
     <Box className={style('profile-card')}>
       <Flex className={style('profile-card__content')} justify="space-between">
@@ -16,7 +21,7 @@ function PersonalPart() {
           <Avatar
             size="xl"
             border="5px var(--chakra-colors-gray) solid"
-            name={'Иванов Иван Иванович'}
+            name={personalInfo?.name}
             src="https://bit.ly/broken-link"
           />
           <Flex
@@ -28,13 +33,15 @@ function PersonalPart() {
                 className={style('profile-card__personal-info-name')}
                 fontSize="md"
               >
-                {'Иванов Иван Иванович'}
+                {personalInfo?.name}
               </Text>
               <Text
                 className={style('profile-card__personal-info-spec')}
                 fontSize="xxs"
               >
-                {'Frontend, middle'}
+                {personalInfo?.specialization +
+                  ', ' +
+                  personalInfo?.qualification}
               </Text>
             </Box>
           </Flex>
@@ -56,7 +63,7 @@ function PersonalPart() {
             background="linear-gradient(0deg, var(--chakra-colors-gray) 0%, var(--chakra-colors-gray) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(221, 221, 221, 0) 100%);"
             borderRadius="16px"
           >
-            {'4.5'}
+            {Math.round(parseFloat(personalInfo.rating ?? '0') * 100) / 100}
           </Box>
           <Box
             maxW="100px"
@@ -69,7 +76,7 @@ function PersonalPart() {
             borderRadius="16px"
             border="4px solid gray"
           >
-            {'5' + 'ч.'}
+            {personalInfo?.freeTimePerWeek + 'ч.'}
           </Box>
         </Flex>
         <Flex direction="column" justify="space-between">
