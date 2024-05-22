@@ -16,7 +16,7 @@ const theme = extendTheme({
     xs: '14px',
     sm: '16px',
     md: '20px',
-    lg: '28px',
+    lg: '24px',
     xl: '32px',
     xxl: '48px',
     xxxl: '60px',
