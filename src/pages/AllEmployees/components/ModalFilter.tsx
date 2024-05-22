@@ -5,7 +5,6 @@ import {
   ModalOverlay,
   ModalContent,
   Input,
-  ModalFooter,
   ModalBody,
   Tabs,
   TabPanels,
