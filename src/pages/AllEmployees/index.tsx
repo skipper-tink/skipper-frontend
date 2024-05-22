@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Flex, Spinner } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import EmployeeList from './components/EmployeeList';
 import { Employee, Skill } from '../../type/dataType';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
 import axios from 'axios';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const style = classNames.bind(styles);
 
@@ -55,7 +56,7 @@ function AllEmployees() {
           {' '}
         </Flex>
         <Flex align="center" justify="center">
-          {loading && <Spinner size="lg" />}
+          {loading && <LoadingSpinner />}
           {!loading && <EmployeeList employees={employees} />}
         </Flex>
       </Box>

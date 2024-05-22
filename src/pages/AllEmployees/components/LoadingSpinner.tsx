@@ -1,7 +1,5 @@
 import React from 'react';
 import { Flex, Text, Spinner } from '@chakra-ui/react';
-import styles from '../style.module.css';
-import classNames from 'classnames/bind';
 
 function LoadingSpinner() {
   return (
@@ -12,7 +10,7 @@ function LoadingSpinner() {
       maxW="420px"
     >
       <Spinner size="lg" />
-      <Text fontSize="md" fontWeight="700">
+      <Text fontSize="lg" fontWeight="700">
         В поисках идеального кандидата!
       </Text>
       <Text>
