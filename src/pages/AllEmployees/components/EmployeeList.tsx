@@ -29,10 +29,9 @@ function EmployeeList({ employees }: EmployeeListProps) {
       <div className={style('employee-list__button')}>
         <IconButton
           aria-label="Some button"
-          size="s"
-          ml="4px"
-          variant="solid"
-          color="black"
+          width="48px"
+          height="48px"
+          borderRadius="8px"
           backgroundColor="darkGray"
           p="4px"
           isRound={true}

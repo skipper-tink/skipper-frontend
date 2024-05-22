@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
-import {
-  Box,
-  Flex,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  IconButton,
-  Button,
-} from '@chakra-ui/react';
+import { Box, Flex, IconButton } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 import EmployeeList from './components/EmployeeList';
 import { Employee, Skill } from '../../type/dataType';
@@ -20,13 +8,26 @@ import styles from './style.module.css';
 import classNames from 'classnames/bind';
 import axios from 'axios';
 import LoadingSpinner from './components/LoadingSpinner';
+import ModalFilter from './components/ModalFilter';
 
 const style = classNames.bind(styles);
 
 function AllEmployees() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [skills, setSkills] = useState<Skill[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/skills');
+        setSkills(response.data);
+      } catch (error) {
+        console.error('Ошибка при скиллов:', error);
+      }
+    };
+    fetchSkills();
+  }, []);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -80,20 +81,7 @@ function AllEmployees() {
             icon={<SettingsIcon className="employee-list__button-icon" />}
             onClick={onOpen}
           />
-          <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Modal Title</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody></ModalBody>
-
-              <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={onClose}>
-                  Close
-                </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+          <ModalFilter skills={skills} isOpen={isOpen} onClose={onClose} />
         </Flex>
         <Flex align="center" justify="center">
           {loading && <LoadingSpinner />}

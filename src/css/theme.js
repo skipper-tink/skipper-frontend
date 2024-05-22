@@ -31,6 +31,7 @@ const theme = extendTheme({
     md: '48px',
     lg: '60px',
     xl: '80px',
+    modal: '200px',
   },
   space: {
     mdOne: '20px',

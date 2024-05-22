@@ -99,3 +99,14 @@
   font-size: 22px;
   font-weight: bold;
 }
+
+.selected {
+  border: 2px solid var(--chakra-colors-darkGray);
+  transition: 0.5s ease;
+  border-radius: 5px;
+}
+
+.elem {
+  transition: 0.5s ease;
+  border: 2px solid transparent;
+}
