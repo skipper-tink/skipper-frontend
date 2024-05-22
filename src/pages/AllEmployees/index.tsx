@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  IconButton,
+  Button,
+} from '@chakra-ui/react';
+import { SettingsIcon } from '@chakra-ui/icons';
 import EmployeeList from './components/EmployeeList';
 import { Employee, Skill } from '../../type/dataType';
 import styles from './style.module.css';
@@ -12,6 +26,7 @@ const style = classNames.bind(styles);
 function AllEmployees() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -49,11 +64,36 @@ function AllEmployees() {
         h="100%"
         background="gray"
       >
-        <Flex
-          backgroundColor="darkGray"
-          className={style('all-employees__filters')}
-        >
-          {' '}
+        <Flex alignItems="center" justifyContent="space-between">
+          <Flex
+            backgroundColor="darkGray"
+            className={style('all-employees__filters')}
+          >
+            {' '}
+          </Flex>
+          <IconButton
+            aria-label="filters"
+            width="48px"
+            height="48px"
+            borderRadius="8px"
+            backgroundColor="darkGray"
+            icon={<SettingsIcon className="employee-list__button-icon" />}
+            onClick={onOpen}
+          />
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Modal Title</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody></ModalBody>
+
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={onClose}>
+                  Close
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
         </Flex>
         <Flex align="center" justify="center">
           {loading && <LoadingSpinner />}
