@@ -77,7 +77,7 @@ function ProfilePage() {
   const sendFeedback = async (comment: string, reviewerName: string) => {
     try {
       const res = await axios.post('http://localhost:8080/api/feedbacks', {
-        rating: 0,
+        rating: 3,
         comment,
         demandEmployeeId: id,
         reviewerName,

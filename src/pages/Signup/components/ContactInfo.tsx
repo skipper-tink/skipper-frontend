@@ -3,6 +3,7 @@ import { Flex, Box, Text, Input } from '@chakra-ui/react';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
 import { Contacts } from '../../../type/dataType';
+import validator from 'validator';
 
 const style = classNames.bind(styles);
 
@@ -74,6 +75,7 @@ function ContactInfo({ contacts, onContactsChanged }: ContactInfoProps) {
         <Text fontWeight="700">Почта:</Text>
         <Input
           value={mail}
+          isInvalid={!validator.isEmail(mail)}
           onChange={handleMailChange}
           maxW="222px"
           borderRadius="6px"

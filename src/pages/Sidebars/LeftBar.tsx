@@ -9,6 +9,7 @@ import {
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
 import { useUserStore } from '../../stores/user.store';
+import { Link } from 'react-router-dom';
 
 const style = classNames.bind(styles);
 
@@ -48,20 +49,22 @@ function LeftBar() {
             </Text>
           </Box>
           <Box w="200px">
-            <Box
-              bg="darkGray"
-              h="48px"
-              justifyContent={'center'}
-              className={style('pages')}
-            >
-              <Text
-                fontWeight={700}
-                justifySelf={'center'}
-                className={style('page-name-and-icon')}
+            <Link to={`/`}>
+              <Box
+                bg="darkGray"
+                h="48px"
+                justifyContent={'center'}
+                className={style('pages')}
               >
-                <HamburgerIcon /> Кандидаты
-              </Text>
-            </Box>
+                <Text
+                  fontWeight={700}
+                  justifySelf={'center'}
+                  className={style('page-name-and-icon')}
+                >
+                  <HamburgerIcon /> Кандидаты
+                </Text>
+              </Box>
+            </Link>
             <Box bg="darkGray" h="48px" className={style('pages')}>
               <Text fontWeight={700} className={style('page-name-and-icon')}>
                 <CheckIcon /> Пул задач

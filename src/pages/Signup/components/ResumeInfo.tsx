@@ -10,6 +10,7 @@ import {
   TabPanel,
   TabIndicator,
   Input,
+  Fade,
 } from '@chakra-ui/react';
 import { Skill, WorkInfo } from '../../../type/dataType';
 import classNames from 'classnames/bind';
@@ -168,42 +169,44 @@ function ResumeInfo({ skills, workInfo, onWorkInfoChange }: ResumeInfoProps) {
           ))}
         </TabList>
         <TabIndicator mt="-2px" height="2px" bg="darkGray" borderRadius="1px" />
-        <TabPanels h="22vh" overflowY="auto" fontSize="14px" fontWeight="500">
-          {listOfSpecialization.map((spec: string) => (
-            <TabPanel key={spec} display="flex" flexWrap="wrap" gap="25px">
-              {skills.map(
-                (skill: Skill) =>
-                  (spec === 'Все' && (
-                    <Text
-                      cursor="pointer"
-                      pointerEvents={role === 'employer' ? 'none' : undefined}
-                      padding="8px"
-                      key={skill.name.concat(skill.specialization)}
-                      className={style(
-                        listOfSkills.includes(skill) ? 'selected' : 'elem',
-                      )}
-                      onClick={() => toggleSkill(skill)}
-                    >
-                      {skill.name}
-                    </Text>
-                  )) ||
-                  (skill.specialization === spec && (
-                    <Text
-                      cursor="pointer"
-                      pointerEvents={role === 'employer' ? 'none' : undefined}
-                      key={skill.name.concat(skill.specialization)}
-                      className={style({
-                        selected: listOfSkills.includes(skill),
-                      })}
-                      onClick={() => toggleSkill(skill)}
-                    >
-                      {skill.name}
-                    </Text>
-                  )),
-              )}
-            </TabPanel>
-          ))}
-        </TabPanels>
+        <Fade in={role !== 'employer'}>
+          <TabPanels h="22vh" overflowY="auto" fontSize="14px" fontWeight="500">
+            {listOfSpecialization.map((spec: string) => (
+              <TabPanel key={spec} display="flex" flexWrap="wrap" gap="25px">
+                {skills.map(
+                  (skill: Skill) =>
+                    (spec === 'Все' && (
+                      <Text
+                        cursor="pointer"
+                        pointerEvents={role === 'employer' ? 'none' : undefined}
+                        padding="8px"
+                        key={skill.name.concat(skill.specialization)}
+                        className={style(
+                          listOfSkills.includes(skill) ? 'selected' : 'elem',
+                        )}
+                        onClick={() => toggleSkill(skill)}
+                      >
+                        {skill.name}
+                      </Text>
+                    )) ||
+                    (skill.specialization === spec && (
+                      <Text
+                        cursor="pointer"
+                        pointerEvents={role === 'employer' ? 'none' : undefined}
+                        key={skill.name.concat(skill.specialization)}
+                        className={style({
+                          selected: listOfSkills.includes(skill),
+                        })}
+                        onClick={() => toggleSkill(skill)}
+                      >
+                        {skill.name}
+                      </Text>
+                    )),
+                )}
+              </TabPanel>
+            ))}
+          </TabPanels>
+        </Fade>
       </Tabs>
       <Flex
         alignItems="center"
