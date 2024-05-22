@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Spinner } from '@chakra-ui/react';
 import EmployeeList from './components/EmployeeList';
 import { Employee, Skill } from '../../type/dataType';
 import styles from './style.module.css';
@@ -10,10 +10,12 @@ const style = classNames.bind(styles);
 
 function AllEmployees() {
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
+        setLoading(true);
         const response = await axios.get('http://localhost:8080/api/employees');
         const updatedEmployees = await Promise.all(
           response.data.map(async (employee: Employee) => {
@@ -29,6 +31,8 @@ function AllEmployees() {
         setEmployees(updatedEmployees);
       } catch (error) {
         console.error('Ошибка при загрузке сотрудников:', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchEmployees();
@@ -50,8 +54,9 @@ function AllEmployees() {
         >
           {' '}
         </Flex>
-        <Flex align="center">
-          <EmployeeList employees={employees} />
+        <Flex align="center" justify="center">
+          {loading && <Spinner size="lg" />}
+          {!loading && <EmployeeList employees={employees} />}
         </Flex>
       </Box>
     </div>
