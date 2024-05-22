@@ -9,6 +9,7 @@ import axios from 'axios';
 import { Skill, WorkInfo, Creds, Contacts } from '../../type/dataType';
 import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../stores/user.store';
+import validator from 'validator';
 
 const style = classNames.bind(styles);
 
@@ -149,6 +150,9 @@ function Signup() {
               borderRadius="6px"
               p="3"
               colorScheme="blackAlpha"
+              isDisabled={
+                creds.password.length < 5 || !validator.isEmail(contacts.mail)
+              }
             >
               Зарегистрироваться
             </Button>

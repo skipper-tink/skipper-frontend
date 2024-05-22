@@ -5,15 +5,18 @@ import { Employee, Skill } from '../../type/dataType';
 import styles from './style.module.css';
 import classNames from 'classnames/bind';
 import axios from 'axios';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const style = classNames.bind(styles);
 
 function AllEmployees() {
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
+        setLoading(true);
         const response = await axios.get('http://localhost:8080/api/employees');
         const updatedEmployees = await Promise.all(
           response.data.map(async (employee: Employee) => {
@@ -29,6 +32,8 @@ function AllEmployees() {
         setEmployees(updatedEmployees);
       } catch (error) {
         console.error('Ошибка при загрузке сотрудников:', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchEmployees();
@@ -50,8 +55,9 @@ function AllEmployees() {
         >
           {' '}
         </Flex>
-        <Flex align="center">
-          <EmployeeList employees={employees} />
+        <Flex align="center" justify="center">
+          {loading && <LoadingSpinner />}
+          {!loading && <EmployeeList employees={employees} />}
         </Flex>
       </Box>
     </div>

@@ -29,7 +29,7 @@
   flex-direction: column;
   gap: 10px;
   width: calc(61vw + 10px);
-  max-width: 880px;
+  max-width: 890px;
   max-height: 620px;
   padding-right: 5px;
   overflow-y: scroll;
@@ -60,6 +60,10 @@
   flex: 0 0 auto;
   width: 10vw;
   max-width: 140px;
+
+  @media (max-width: 1439px) {
+    font-size: 12px;
+  }
 }
 
 .employee-card__personal-info > p {
@@ -77,10 +81,12 @@
 }
 .employee-card__personal-info-spec {
   width: 9vw;
+  max-width: 130px;
   padding: 4px 15px 4px 15px;
 }
 .employee-card__personal-info-grade {
   width: 8vw;
+  max-width: 120px;
   padding: 4px 10px 4px 15px;
 }
 

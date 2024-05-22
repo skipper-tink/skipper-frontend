@@ -95,7 +95,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
               background="var(--chakra-colors-gradientGray)"
               borderRadius="16px"
             >
-              {employee.rating}
+              {Math.round(parseFloat(employee.rating ?? '0') * 100) / 100}
             </Box>
             <Box
               maxW="100px"
