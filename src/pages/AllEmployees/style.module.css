@@ -31,7 +31,7 @@
   max-width: 890px;
   height: 68vh;
   padding-right: 5px;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .employee-list__content > div {
