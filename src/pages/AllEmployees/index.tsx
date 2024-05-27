@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
-import { Box, Flex, IconButton } from '@chakra-ui/react';
+import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 import EmployeeList from './components/EmployeeList';
 import { Employee, Skill } from '../../type/dataType';
@@ -71,7 +71,24 @@ function AllEmployees() {
     });
   }
 
+  function pluralForm(count: number) {
+    return count % 10 === 1 && count !== 11 ? 'часа' : 'часов';
+  }
+
+  function concatListOfFilters(): string[] {
+    let result = [];
+    if (grade) result.push(grade);
+    if (freeHours > 0)
+      result.push('>' + freeHours.toString() + ` ${pluralForm(freeHours)}`);
+    if (listOfSkills.length) {
+      result = result.concat(listOfSkills.map((el) => el.name));
+    }
+    console.log(result);
+    return result;
+  }
+
   const filteredEmployees = filterEmployees();
+  const listOfFilters = concatListOfFilters();
 
   return (
     <div className={style('all-employees')}>
@@ -87,8 +104,23 @@ function AllEmployees() {
           <Flex
             backgroundColor="darkGray"
             className={style('all-employees__filters')}
+            gap="10px"
+            alignItems="end"
           >
-            {' '}
+            {listOfFilters.length > 0 &&
+              listOfFilters.map((el, index) => (
+                <Text
+                  className={style('all-employees__filters-item')}
+                  key={index}
+                  fontSize="14px"
+                  padding={2}
+                  background="var(--chakra-colors-gray)"
+                  borderRadius="8px 8px 0 0"
+                  fontWeight="700"
+                >
+                  {el}
+                </Text>
+              ))}
           </Flex>
           <IconButton
             aria-label="filters"
