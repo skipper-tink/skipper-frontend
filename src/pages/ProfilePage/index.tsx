@@ -76,13 +76,12 @@ function ProfilePage() {
 
   const sendFeedback = async (comment: string, reviewerName: string) => {
     try {
-      const res = await axios.post('http://localhost:8080/api/feedbacks', {
+      await axios.post('http://localhost:8080/api/feedbacks', {
         rating: 3,
         comment,
         demandEmployeeId: id,
         reviewerName,
       });
-      console.log(res);
     } catch (error) {
       console.error('Ошибка при отправке отзыва:', error);
     }

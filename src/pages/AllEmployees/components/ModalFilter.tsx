@@ -74,7 +74,7 @@ function ModalFilter({
     'Все',
     'Frontend',
     'Backend',
-    'DevOps',
+    'DevOPS',
     'QA',
     'IOS',
   ];
@@ -210,11 +210,14 @@ function ModalFilter({
                         )) ||
                         (skill.specialization === spec && (
                           <Text
+                            padding="8px"
                             cursor="pointer"
                             key={skill.name.concat(skill.specialization)}
-                            className={style({
-                              selected: listOfSkills.includes(skill),
-                            })}
+                            className={style(
+                              listOfSkills.includes(skill)
+                                ? 'selected'
+                                : 'elem',
+                            )}
                             onClick={() => toggleSkill(skill)}
                           >
                             {skill.name}
