@@ -29,9 +29,9 @@
   gap: 10px;
   width: calc(61vw + 10px);
   max-width: 890px;
-  max-height: 620px;
+  height: 68vh;
   padding-right: 5px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .employee-list__content > div {
