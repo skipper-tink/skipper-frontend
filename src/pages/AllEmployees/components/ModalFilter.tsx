@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Flex,
   Modal,
   ModalOverlay,
   ModalContent,
-  Input,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
   ModalBody,
   Tabs,
   TabPanels,
@@ -27,13 +29,25 @@ interface ModalFilterProps {
   skills: Skill[];
   isOpen: boolean;
   onClose: () => void;
+  grade: string;
+  setGrade: (grade: string) => void;
+  freeHours: number;
+  setFreeHours: (hours: number) => void;
+  listOfSkills: Skill[];
+  setListOfSkills: (skills: Skill[]) => void;
 }
 
-function ModalFilter({ skills, isOpen, onClose }: ModalFilterProps) {
-  const [grade, setGrade] = useState<string>('');
-  const [freehours, setHours] = useState<number>(0);
-  const [listOfSkills, setListOfSkills] = useState<Skill[]>([]);
-
+function ModalFilter({
+  skills,
+  isOpen,
+  onClose,
+  grade,
+  setGrade,
+  freeHours,
+  setFreeHours,
+  listOfSkills,
+  setListOfSkills,
+}: ModalFilterProps) {
   const toggleSkill = (skill: Skill) => {
     const updatedSkills = [...listOfSkills];
     const skillIndex = updatedSkills.indexOf(skill);
@@ -46,8 +60,10 @@ function ModalFilter({ skills, isOpen, onClose }: ModalFilterProps) {
   };
 
   const handleHoursChange = (event: string) => {
+    if (event === '') event = '0';
+    if (parseInt(event, 10) > 56) event = '56';
     const hours = parseInt(event, 10);
-    setHours(hours);
+    setFreeHours(hours);
   };
 
   const handleGradeChange = (event: string) => {
@@ -90,15 +106,19 @@ function ModalFilter({ skills, isOpen, onClose }: ModalFilterProps) {
             <Text fontWeight="700" fontSize="lg">
               Свободные часы:
             </Text>
-            <Input
-              value={freehours}
-              onChange={(e) => handleHoursChange(e.target.value)}
-              type="number"
+            <NumberInput
+              value={freeHours}
+              onChange={(valueString) => handleHoursChange(valueString)}
               background="white"
-              maxW="65px"
               borderRadius="6px"
-              borderColor="gray"
-            />
+              maxW="65px"
+              max={56}
+              defaultValue={0}
+              min={0}
+            >
+              <NumberInputField borderRadius="6px" borderColor="gray" p={2} />
+              <NumberInputStepper></NumberInputStepper>
+            </NumberInput>
           </Flex>
           <Flex
             alignItems="center"

@@ -17,6 +17,11 @@ function AllEmployees() {
   const [loading, setLoading] = useState<boolean>(false);
   const [skills, setSkills] = useState<Skill[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [grade, setGrade] = useState<string>('');
+  const [freeHours, setFreeHours] = useState<number>(0);
+  const [listOfSkills, setListOfSkills] = useState<Skill[]>([]);
+
   useEffect(() => {
     const fetchSkills = async () => {
       try {
@@ -55,6 +60,19 @@ function AllEmployees() {
     fetchEmployees();
   }, []);
 
+  function filterEmployees(): Employee[] {
+    return employees.filter((employee) => {
+      const matchesGrade = grade === '' || employee.qualification === grade;
+      const matchesFreeHours = employee.freeTimePerWeek >= freeHours;
+      const matchesSkills = listOfSkills.every((skill) =>
+        employee.stack.includes(skill.name),
+      );
+      return matchesGrade && matchesFreeHours && matchesSkills;
+    });
+  }
+
+  const filteredEmployees = filterEmployees();
+
   return (
     <div className={style('all-employees')}>
       <Box
@@ -81,11 +99,21 @@ function AllEmployees() {
             icon={<SettingsIcon className="employee-list__button-icon" />}
             onClick={onOpen}
           />
-          <ModalFilter skills={skills} isOpen={isOpen} onClose={onClose} />
+          <ModalFilter
+            skills={skills}
+            isOpen={isOpen}
+            onClose={onClose}
+            grade={grade}
+            setGrade={setGrade}
+            freeHours={freeHours}
+            setFreeHours={setFreeHours}
+            listOfSkills={listOfSkills}
+            setListOfSkills={setListOfSkills}
+          />
         </Flex>
         <Flex align="center" justify="center">
           {loading && <LoadingSpinner />}
-          {!loading && <EmployeeList employees={employees} />}
+          {!loading && <EmployeeList employees={filteredEmployees} />}
         </Flex>
       </Box>
     </div>
