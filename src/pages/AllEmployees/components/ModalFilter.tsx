@@ -147,13 +147,19 @@ function ModalFilter({
               <option value="TechLead">Tech Lead</option>
             </Select>
           </Flex>
-          <Flex alignItems="flex-end" gap="16px" justifyContent="end" w="100%">
+          <Flex
+            alignItems="flex-end"
+            gap="16px"
+            justifyContent="center"
+            w="100%"
+          >
             <Tabs
               className={style('filter-info__tabs')}
               maxW="450px"
               w="100%"
               isFitted
               variant="unstyled"
+              ml="48px"
             >
               <TabList borderBottom="2px var(--chakra-colors-gray) solid">
                 {listOfSpecialization.map((spec: string) => (
