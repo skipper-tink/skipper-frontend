@@ -83,7 +83,6 @@ function AllEmployees() {
     if (listOfSkills.length) {
       result = result.concat(listOfSkills.map((el) => el.name));
     }
-    console.log(result);
     return result;
   }
 
@@ -127,7 +126,7 @@ function AllEmployees() {
             width="48px"
             height="48px"
             borderRadius="8px"
-            backgroundColor="darkGray"
+            className={style('all-employees__filters-button')}
             icon={<SettingsIcon className="employee-list__button-icon" />}
             onClick={onOpen}
           />

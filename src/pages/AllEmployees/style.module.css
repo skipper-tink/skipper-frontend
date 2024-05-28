@@ -24,8 +24,20 @@
   text-wrap: nowrap;
 }
 
+.all-employees__filters-button {
+  background-color: var(--chakra-colors-darkGray);
+  transition: 0.5s;
+}
+
+.all-employees__filters-button:hover,
+.employee-card__button:hover {
+  opacity: 0.6;
+  transition: 0.5s;
+}
+
 .employee-list {
   width: 100%;
+  gap: 10px;
 }
 
 .employee-list__content {
@@ -68,6 +80,11 @@
   @media (max-width: 1439px) {
     font-size: 12px;
   }
+}
+
+.employee-card__button {
+  background-color: var(--chakra-colors-gray);
+  transition: 0.5s;
 }
 
 .employee-card__personal-info > p {

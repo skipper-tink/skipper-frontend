@@ -10,10 +10,12 @@ import styles from './style.module.css';
 import classNames from 'classnames/bind';
 import { useUserStore } from '../../stores/user.store';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const style = classNames.bind(styles);
 
 function LeftBar() {
+  const location = useLocation();
   const userStore = useUserStore();
   return (
     <Flex
@@ -49,12 +51,14 @@ function LeftBar() {
             </Text>
           </Box>
           <Box w="200px">
-            <Link to={`/`}>
+            <Link to={`/employees`}>
               <Box
-                bg="darkGray"
                 h="48px"
                 justifyContent={'center'}
-                className={style('pages')}
+                className={style(
+                  'pages',
+                  location.pathname.includes('employees') ? 'selected' : '',
+                )}
               >
                 <Text
                   fontWeight={700}
@@ -65,12 +69,18 @@ function LeftBar() {
                 </Text>
               </Box>
             </Link>
-            <Box bg="darkGray" h="48px" className={style('pages')}>
+            <Box
+              h="48px"
+              className={style(
+                'pages',
+                location.pathname.includes('pooloftasks') ? 'selected' : '',
+              )}
+            >
               <Text fontWeight={700} className={style('page-name-and-icon')}>
                 <CheckIcon /> Пул задач
               </Text>
             </Box>
-            <Box bg="darkGray" h="48px" className={style('pages')}>
+            <Box h="48px" className={style('pages')}>
               <Text fontWeight={700} className={style('page-name-and-icon')}>
                 <EditIcon />
                 Аналитика

@@ -27,7 +27,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             <Flex className={style('employee-card__personal')}>
               <Avatar
                 size="xl"
-                name={employee.name}
+                name={employee.name.split(' ').slice(0, 2).join(' ')}
                 src="https://bit.ly/broken-link"
               />
               <Flex
@@ -38,7 +38,7 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
                   className={style('employee-card__personal-info-name')}
                   fontSize="xs"
                 >
-                  {employee.name}
+                  {employee.name.split(' ').slice(0, 2).join(' ')}
                 </Text>
                 <Text
                   className={style('employee-card__personal-info-spec')}
@@ -112,20 +112,15 @@ function EmployeeCard({ employee }: EmployeeCardProps) {
             </Box>
           </Flex>
           <IconButton
-            aria-label="Some button"
-            size="s"
-            variant="unstyled"
+            aria-label="filters"
+            width="48px"
+            height="48px"
+            borderRadius="8px"
+            className={style('employee-card__button')}
             color="black"
             isRound={true}
             alignSelf="center"
-            icon={
-              <AddIcon
-                background="white"
-                padding="4px"
-                borderRadius="50%"
-                boxSize="24px"
-              />
-            }
+            icon={<AddIcon />}
             onClick={() => console.log('123')}
           />
         </Flex>

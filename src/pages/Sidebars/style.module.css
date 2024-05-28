@@ -11,7 +11,17 @@
   align-items: center;
   padding: 0 15px;
   border-radius: 0px 50px 50px 0px;
-  width: 15vw;
+  width: 13vw;
+  transition: 0.5s;
+  background: var(--chakra-colors-darkGray);
+  opacity: 0.5;
+}
+
+.selected,
+.pages:hover {
+  opacity: 1;
+  width: 18vw;
+  transition: 0.5s;
 }
 
 .page-name-and-icon {
