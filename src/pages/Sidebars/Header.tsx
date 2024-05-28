@@ -7,24 +7,23 @@ function Header() {
     <div>
       <Box
         w="100%"
-        h="52px"
         position="absolute"
         top="0"
         left="0"
-        paddingRight="mdTwo"
-        paddingTop="mdThree"
+        padding="8px 20px"
         bg="darkGray"
       >
         <Flex justifyContent="flex-end">
           <IconButton
             aria-label="Notification"
-            size="lg"
-            variant="solid"
+            width="48px"
+            height="48px"
+            borderRadius="8px"
             color="black"
             backgroundColor="gray"
             isRound={true}
             alignSelf={'flex-end'}
-            icon={<WarningIcon boxSize={'5'} />}
+            icon={<WarningIcon />}
             onClick={() => console.log('123')}
           />
         </Flex>
